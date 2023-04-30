@@ -15,17 +15,6 @@ router.route("/login").post(function(request, response) {
     }
 });
 
-/*
-router.route("/login").get(function(req, res) { //REQUEST: PETICIÓN, RESPONSE: LA RESPUESTA
-    res.send('<h1>HOLA A TODOS desde ${req.baseUrl}</h1>');
-});
-*/
-module.exports = router;
-/*app.post('/', function (req, res) {
-    res.send('POST request to the homepage');
-});
 
-router.route("/login").get(function(req, res) { //REQUEST: PETICIÓN, RESPONSE: LA RESPUESTA
-    res.send('<h1>HOLA A TODOS desde ${req.baseUrl}</h1>');
-});
-*/
+
+module.exports = router;

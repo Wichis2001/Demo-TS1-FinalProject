@@ -1,0 +1,93 @@
+use game_box
+
+db.createCollection('users');
+
+db.users.insert({
+    idUser: "U1",
+    name: "Alex Miranda",
+    password: "admin123"
+});
+
+db.createCollection('rankings');
+
+db.rankings.insert({
+    idRank: "R1",
+    idUser: "U1",
+    score: 100
+});
+
+db.createCollection('medals');
+
+db.medals.insert({
+    idMedal: "M1",
+    tipo: "Oro",
+    description: "Por ser el primer usuario registrado"
+});
+
+db.createCollection('medal_tables');
+
+db.medal_tables.insert({
+    idTableMedal: "MT1",
+    idUser: "U1",
+    idMedal: "M1"
+});
+
+db.createCollection('games');
+
+db.games.insert({
+    idGame: "G1",
+    nameGame: "Adivina la Palabra",
+    passwrd: "",
+    descriptn: "Tienes que encontrar el orden correcto de una palabra"
+});
+
+db.createCollection('resorces_gi');
+
+db.resorces_gi.insert({
+    idRGI: "RGI1",
+    idGame: "G1",
+    img: "URL"
+});
+
+db.createCollection('resorces_gd');
+
+db.resorces_gd.insert({
+    idRGD: "RGD1",
+    idGame: "G1",
+    data: "computadora"
+});
+
+db.createCollection('notificacion');
+
+db.notificacion.insert({
+    idNot: "N1",
+    idUser: "U1",
+    idGame: "G1",
+    descriptn: "Este es un EasterEgg XD"
+});
+
+db.createCollection('scores');
+
+db.scores.insert({
+    idScore: "S1",
+    idUser: "U1",
+    idGame: "G1",
+    score: 30
+});
+
+db.createCollection('comments');
+
+db.comments.insert({
+    idComm: "C1",
+    idUser: "U1",
+    idGame: "G1",
+    information: "Este es otro EasterEgg XD"
+});
+
+db.createCollection('game_box');
+
+db.game_box.insert({
+    idGB: "GB1",
+    idUser: "U1",
+    idGame: "G1"
+});
