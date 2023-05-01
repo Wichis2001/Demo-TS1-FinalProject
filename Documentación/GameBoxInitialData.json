@@ -41,25 +41,25 @@ db.games.insert({
     descriptn: "Tienes que encontrar el orden correcto de una palabra"
 });
 
-db.createCollection('resorces_gi');
+db.createCollection('resorces_gis');
 
-db.resorces_gi.insert({
+db.resorces_gis.insert({
     idRGI: "RGI1",
     idGame: "G1",
     img: "URL"
 });
 
-db.createCollection('resorces_gd');
+db.createCollection('resorces_gds');
 
-db.resorces_gd.insert({
+db.resorces_gds.insert({
     idRGD: "RGD1",
     idGame: "G1",
     data: "computadora"
 });
 
-db.createCollection('notificacion');
+db.createCollection('notificacions');
 
-db.notificacion.insert({
+db.notificacions.insert({
     idNot: "N1",
     idUser: "U1",
     idGame: "G1",
@@ -84,9 +84,9 @@ db.comments.insert({
     information: "Este es otro EasterEgg XD"
 });
 
-db.createCollection('game_box');
+db.createCollection('game_boxes');
 
-db.game_box.insert({
+db.game_boxes.insert({
     idGB: "GB1",
     idUser: "U1",
     idGame: "G1"
