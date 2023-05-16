@@ -15,11 +15,9 @@ router.route("/login/create").post(async function(request, response) {
     });
 
     if (insert && name != '' && password != '') {
-        //COLOCAR URL DEL LOGIN
         const insertData = await insert.save();
         initialConfig.addUserRank(insert.idUser);
-        response.send('TODO BIEN, USUARIO REGISTRADO: ' + name);
-        //response.redirect('/Login');
+        response.send({ 'idUser': insert.idUser });
     } else {
         response.send('Datos inválidos');
     }

@@ -9,10 +9,9 @@ router.route("/login").post(async function(request, response) {
     const userTemp = await User.findOne({ name, password });
 
     if (userTemp) {
-        //COLOCAR URL DEL HOME
-        response.redirect('/home/' + name);
+        response.send({ 'idUser': userTemp.idUser });
     } else {
-        response.send('Usuario o contraseña inválida');
+        response.send({ 'idUser': '' });
     }
 });
 

@@ -4,9 +4,9 @@ const Notification = require('../../models/notifications');
 const router = express.Router();
 //verificar login
 
-router.route("/getNotifications").get(async function(request, response) {
+router.route("/getNotifications/:idUser").get(async function(request, response) {
 
-    const { idUser } = request.body;
+    const { idUser } = request.params.idUser;
     const notsTemp = await Notification.find({ idUser: idUser });
     const arrayNot = [];
 

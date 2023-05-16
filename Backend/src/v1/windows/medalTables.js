@@ -4,9 +4,9 @@ const MedalTable = require('../../models/medalsTable');
 const router = express.Router();
 //verificar login
 
-router.route("/getMedalTable").get(async function(request, response) {
+router.route("/getMedalTable/:idUser").get(async function(request, response) {
 
-    const { idUser } = request.body;
+    const { idUser } = request.params.idUser;
     const mdTemp = await MedalTable.find({ idUser: idUser });
     const arrayMD = [];
 
