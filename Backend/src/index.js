@@ -8,7 +8,8 @@ const register = require('./v1/windows/register');
 const notifications = require('./v1/windows/notifications');
 const rankings = require('./v1/windows/rankings');
 const medalTables = require('./v1/windows/medalTables');
-//BORRARRRRRRRRRRRRRRRRRRR
+const scramble = require('./v1/windows/scramble')
+    //BORRARRRRRRRRRRRRRRRRRRR
 const user = require('./v1/routes/userRoute');
 //DEFINIMOS EL USO DE JSON'S
 app.use(express.json());
@@ -34,6 +35,7 @@ app.use("/api", register);
 app.use("/api", notifications);
 app.use("/api", rankings);
 app.use("/api", medalTables);
+app.use("/api", scramble);
 app.listen(PORT, function() {
     console.log('SERVER LISTENING ON PORT ' + PORT);
 });

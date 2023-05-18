@@ -4,9 +4,9 @@ const router = express.Router();
 //verificar login
 
 router.route("/login").post(async function(request, response) {
-    const { name, password } = request.body;
-    // Query the database to find the user with the given email and password
-    const userTemp = await User.findOne({ name, password });
+    const { nickname, password } = request.body;
+
+    const userTemp = await User.findOne({ nickname, password });
 
     if (userTemp) {
         response.send({ 'idUser': userTemp.idUser });

@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const model = mongoose.model;
 
-const resorceGDSchema = new Schema({
-    idRGI: String,
+const wordBoxesSchema = new Schema({
+    idWB: String,
     idGame: String,
-    data: String
+    word: String,
+    score: Number
 }, {
     versionKey: false
 });
 
-module.exports = model('resorces_gds', resorceGDSchema);
+module.exports = model('word_boxes', wordBoxesSchema);

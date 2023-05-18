@@ -4,8 +4,11 @@ const model = mongoose.model;
 
 const userSchema = new Schema({
     idUser: String,
+    nickname: String,
     name: String,
-    password: String
+    lastname: String,
+    password: String,
+    rol: String
 }, {
     versionKey: false
 });

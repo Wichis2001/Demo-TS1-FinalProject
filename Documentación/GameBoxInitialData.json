@@ -41,21 +41,54 @@ db.games.insert({
     descriptn: "Tienes que encontrar el orden correcto de una palabra"
 });
 
-db.createCollection('resorces_gis');
+db.createCollection('model_games');
 
-db.resorces_gis.insert({
-    idRGI: "RGI1",
+db.model_games.insert({
+    idModel: "M1",
+    name: "Scrambled",
+    descriptn: "Juego en donde se debe ordenar y adivinar una palabra"
+})
+
+db.createCollection('word_boxes');
+
+db.word_boxes.insert({
+    idWB: "WB1",
     idGame: "G1",
-    img: "URL"
-});
+    word: "sistema",
+    score: 10
+})
 
-db.createCollection('resorces_gds');
+db.createCollection('question_boxes');
 
-db.resorces_gds.insert({
-    idRGD: "RGD1",
-    idGame: "G1",
-    data: "computadora"
-});
+db.question_boxes.insert({
+    idQB: "QB1",
+    idGame: "G2",
+    word: "¿Qué colores tiene la bandera de Guatemala?",
+    score: 10
+})
+
+db.createCollection('answers');
+
+db.answers.insert({
+    idA: "A1",
+    idQuestion: "QB1",
+    answer: "Rojo, Azul y Verde",
+    value: "False"
+})
+
+db.answers.insert({
+    idA: "A2",
+    idQuestion: "QB1",
+    answer: "Rojo, Azul y Morado",
+    value: "False"
+})
+
+db.answers.insert({
+    idA: "A3",
+    idQuestion: "QB1",
+    answer: "Blanco y Celeste",
+    value: "True"
+})
 
 db.createCollection('notificacions');
 

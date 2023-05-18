@@ -6,7 +6,8 @@ const gameSchema = new Schema({
     idGame: String,
     nameGame: String,
     passwrd: String,
-    descriptn: String
+    descriptn: String,
+    idModel: String
 }, {
     versionKey: false
 });

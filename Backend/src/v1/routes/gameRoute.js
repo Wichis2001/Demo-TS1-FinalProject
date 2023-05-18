@@ -8,7 +8,8 @@ router.post('/addGame', async function(request, response) {
         idGame: "G" + (lastRegister + 1),
         nameGame: request.body.nameGame,
         passwrd: request.body.passwrd,
-        descriptn: request.body.descriptn
+        descriptn: request.body.descriptn,
+        idModel: request.body.idModel
     });
     const insertData = await insert.save();
     response.json(insertData);
