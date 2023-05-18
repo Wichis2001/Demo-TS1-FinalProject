@@ -1,7 +1,23 @@
 const express = require('express');
+const Game = require('../../models/games');
 const router = express.Router();
 
 router.route("/scramble/:word").get(async function(request, response) {
+
+    let scrambled = "";
+    const letters = request.params.word.split('');
+
+    while (letters.length > 0) {
+        const randomIndex = Math.floor(Math.random() * letters.length);
+        const randomLetter = letters.splice(randomIndex, 1)[0];
+        scrambled += randomLetter;
+    }
+
+    response.send({ 'word': scrambled });
+
+});
+
+router.route("/playScramble").get(async function(request, response) {
 
     let scrambled = "";
     const letters = request.params.word.split('');
@@ -35,7 +51,7 @@ router.route("/newScramble").post(async function(request, response) {
         .then(response => {
             //COSAS
             const data2 = {
-                idGame: request.body.idGame,
+                idGame: Game.findOne({ idGame }),
                 word: request.body.word,
                 score: request.body.score
             }
@@ -53,14 +69,8 @@ router.route("/newScramble").post(async function(request, response) {
                 })
                 .catch(error => console.error(error));
 
-
         })
         .catch(error => console.error(error));
-
-
-
-
-
 
     const lastRegister = await Game.count();
     const insert = new Game({

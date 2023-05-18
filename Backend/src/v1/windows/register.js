@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route("/login/create").post(async function(request, response) {
 
-    const { nickname, lastname, name, password } = request.body;
+    const { nickname, lastname, name, password, rol } = request.body;
     const lastRegister = await User.count();
 
     const insert = new User({
@@ -14,7 +14,7 @@ router.route("/login/create").post(async function(request, response) {
         name: name,
         lastname: lastname,
         password: password,
-        rol: 'Comun'
+        rol: rol
     });
 
     if (insert && name != '' && password != '' && lastname != '' && nickname != '') {

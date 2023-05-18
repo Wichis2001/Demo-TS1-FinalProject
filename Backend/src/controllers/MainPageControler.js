@@ -9,7 +9,7 @@ async function getNameGame(idGameParam) {
 
 async function getNameUser(idUserParam) {
     const tempUser = await User.findOne({ idUser: idUserParam })
-    return tempUser.name;
+    return tempUser.nickname;
 }
 
 async function getDescrpMedal(idMedal) {

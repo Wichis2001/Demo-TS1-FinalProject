@@ -39,6 +39,15 @@ db.games.insert({
     nameGame: "Adivina la Palabra",
     passwrd: "",
     descriptn: "Tienes que encontrar el orden correcto de una palabra"
+    idModel: "M1"
+});
+
+db.games.insert({
+    idGame: "G2",
+    nameGame: "Preguntados BETA",
+    passwrd: "",
+    descriptn: "Contesta correctamente a todas las palabras"
+    idModel: "M2"
 });
 
 db.createCollection('model_games');
@@ -49,12 +58,25 @@ db.model_games.insert({
     descriptn: "Juego en donde se debe ordenar y adivinar una palabra"
 })
 
+db.model_games.insert({
+    idModel: "M2",
+    name: "Preguntados",
+    descriptn: "Juego en donde debes contestar correctamente a la pregunta"
+})
+
 db.createCollection('word_boxes');
 
 db.word_boxes.insert({
     idWB: "WB1",
     idGame: "G1",
     word: "sistema",
+    score: 10
+})
+
+db.word_boxes.insert({
+    idWB: "WB2",
+    idGame: "G1",
+    word: "tecnología",
     score: 10
 })
 
