@@ -4,8 +4,29 @@ db.createCollection('users');
 
 db.users.insert({
     idUser: "U1",
-    name: "Alex Miranda",
+    name: "Alex",
+    lastname: "Miranda",
+    nickname: "alex123",
+    password: "contra123"
+    rol: "estudiante"
+});
+
+db.users.insert({
+    idUser: "U1",
+    name: "Luis",
+    lastname: "Sanchez",
+    nickname: "wicho123",
+    password: "contra123"
+    rol: "maestro"
+});
+
+db.users.insert({
+    idUser: "U1",
+    name: "Usuario",
+    lastname: "user",
+    nickname: "admin",
     password: "admin123"
+    rol: "admin"
 });
 
 db.createCollection('rankings');
