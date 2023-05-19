@@ -1,5 +1,5 @@
 const express = require('express');
-const Game = require('../../models/games');
+const getRC = require('../../controllers/GetsDataController');
 const router = express.Router();
 
 router.route("/scramble/:word").get(async function(request, response) {
@@ -17,77 +17,20 @@ router.route("/scramble/:word").get(async function(request, response) {
 
 });
 
-router.route("/playScramble").get(async function(request, response) {
+router.route("/getCodeWords/:idGame").get(async function(request, response) {
 
-    let scrambled = "";
-    const letters = request.params.word.split('');
-
-    while (letters.length > 0) {
-        const randomIndex = Math.floor(Math.random() * letters.length);
-        const randomLetter = letters.splice(randomIndex, 1)[0];
-        scrambled += randomLetter;
-    }
-
-    response.send({ 'word': scrambled });
-
+    const codesWords = await getRC.getAllWordsCodes(request.params.idGame);
+    response.send(codesWords);
 });
 
-router.route("/newScramble").post(async function(request, response) {
-    const data = {
-        nameGame: request.body.nameGame,
-        passwrd: request.body.passwrd,
-        descriptn: request.body.descriptn,
-        idModel: request.body.idModel
+router.route("/playScramble/:idWord/:answer").get(async function(request, response) {
+    const { idWord, answer } = request.params;
+    const word = await getRC.getWord(idWord);
+    let points = 0;
+    if (word.word == answer) {
+        points = word.score;
     }
-
-    fetch('http://localhost:4200/api/addGame', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(response => {
-            //COSAS
-            const data2 = {
-                idGame: Game.findOne({ idGame }),
-                word: request.body.word,
-                score: request.body.score
-            }
-
-            fetch('http://localhost:4200/api/addWord', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data2)
-                })
-                .then(response => response.json())
-                .then(response => {
-                    //COSAS
-                })
-                .catch(error => console.error(error));
-
-        })
-        .catch(error => console.error(error));
-
-    const lastRegister = await Game.count();
-    const insert = new Game({
-        idGame: "G" + (lastRegister + 1),
-        nameGame: request.body.nameGame,
-        passwrd: request.body.passwrd,
-        descriptn: request.body.descriptn,
-        idModel: request.body.idModel
-    });
-    const insertData = await insert.save();
-    response.json(insertData);
-    console.log(request.body);
-
+    response.send(points.toString());
 });
-
-
-
-
 
 module.exports = router;

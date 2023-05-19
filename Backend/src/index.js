@@ -7,11 +7,11 @@ const login = require('./v1/windows/login');
 const register = require('./v1/windows/register');
 const notifications = require('./v1/windows/notifications');
 const rankings = require('./v1/windows/rankings');
+const scores = require('./v1/windows/scores');
 const medalTables = require('./v1/windows/medalTables');
 const scramble = require('./v1/windows/scramble')
-    //BORRARRRRRRRRRRRRRRRRRRR
-const user = require('./v1/routes/userRoute');
-//DEFINIMOS EL USO DE JSON'S
+const game = require('./v1/windows/gameRoute')
+    //DEFINIMOS EL USO DE JSON'S
 app.use(express.json());
 //CONEXION CON LA BASE DE DATOS
 
@@ -34,8 +34,10 @@ app.use("/api", login);
 app.use("/api", register);
 app.use("/api", notifications);
 app.use("/api", rankings);
+app.use("/api", scores);
 app.use("/api", medalTables);
 app.use("/api", scramble);
+app.use("/api", game);
 app.listen(PORT, function() {
     console.log('SERVER LISTENING ON PORT ' + PORT);
 });
