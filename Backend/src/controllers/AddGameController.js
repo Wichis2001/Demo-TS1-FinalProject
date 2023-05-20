@@ -39,6 +39,55 @@ async function newScramble(request, response) {
     }
 }
 
+async function newPreguntados(request, response) {
+    const { nameGame, passwrd, descriptn, idUser, quesAns, scores } = request.body;
+
+    if (quesAns.length == scores.length) {
+
+        const insertGame = {
+            nameGame: nameGame,
+            passwrd: passwrd,
+            descriptn: descriptn,
+            idModel: 'M2'
+        }
+
+        const game = await addDC.addData(insertGame, 'Game');
+        console.log(game);
+
+        const insertGB = {
+            idUser: idUser,
+            idGame: game.idGame
+        }
+
+        await addDC.addData(insertGB, 'GameBox');
+
+        //INSERTAR PREGUNTAS Y ANSWERS
+        for (let index = 0; index < quesAns.length; index++) {
+            const quesTemp = quesAns[index];
+            const scoreTemp = scores[index];
+            const insertQuestion = {
+                idGame: game.idGame,
+                question: quesTemp.question,
+                score: scoreTemp
+            }
+            const question = await addDC.addData(insertQuestion, 'Question');
+
+            for (let index = 0; index < quesTemp.answers.length; index++) {
+                const answerTemp = quesTemp.answers[index];
+                const insertAnswer = {
+                    idQuestion: question.idQB,
+                    answer: answerTemp.answer,
+                    value: answerTemp.value
+                }
+                await addDC.addData(insertAnswer, 'Answer');
+
+            }
+
+        }
+        response.json({ 'idGame': game.idGame });
+    }
+}
+
 async function addScore(request, response) {
     const { idUser, idGame, score } = request.body;
 
@@ -56,7 +105,48 @@ async function addScore(request, response) {
 
 }
 
+async function getAllFreeGames(request, response) {
+    const freeGames = await getDC.getFreeGames();
+    response.json(freeGames);
+}
+
+async function getAllGames(request, response) {
+    const games = await getDC.getGames();
+    response.json(games);
+}
+
+async function getAllGamesOwner(request, response) {
+    const { idUser } = request.params;
+    const gamesOwner = await getDC.getGameBoxesOwner(idUser);
+
+    const arrayGames = [];
+
+    for (const element of gamesOwner) {
+        const gameTemp = await getDC.getGame(element.idGame);
+        arrayGames.push(gameTemp);
+    }
+
+    response.json(arrayGames);
+}
+
+async function verifyPassword(request, response) {
+    const { idGame, password } = request.params;
+    const gameTemp = await getDC.getGame(idGame);
+
+    if (gameTemp.passwrd == password) {
+        response.json('correct');
+    } else {
+        response.json('incorrect');
+    }
+
+}
+
 module.exports = {
     newScramble,
-    addScore
+    newPreguntados,
+    addScore,
+    getAllFreeGames,
+    getAllGamesOwner,
+    getAllGames,
+    verifyPassword
 };

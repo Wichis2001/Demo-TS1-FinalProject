@@ -35,9 +35,62 @@ async function getRankingIdUser(idUser) {
     return temp;
 }
 
+
+async function getAllQuestionsCodes(idGame) {
+    const questions = await Question.find({ idGame: idGame })
+    const codes = [];
+    questions.forEach(element => {
+        codes.push(element.idQB);
+    });
+    return codes;
+}
+
+async function getQuestion(idQuest) {
+    const temp = await Question.findOne({ idQB: idQuest })
+    return temp;
+}
+
+async function getAllAnswersCodes(idQuest) {
+    const answers = await Answer.find({ idQuestion: idQuest })
+    const codes = [];
+    answers.forEach(element => {
+        codes.push(element.idA);
+    });
+    return codes;
+}
+
+async function getAnswer(idAnswer) {
+    const temp = await Answer.findOne({ idA: idAnswer })
+    return temp;
+}
+
+async function getFreeGames() {
+    return await Game.find({ passwrd: '' })
+}
+
+async function getGames() {
+    return await Game.find()
+}
+
+async function getGame(idGame) {
+    return await Game.findOne({ idGame: idGame })
+}
+
+async function getGameBoxesOwner(idUser) {
+    return await GameBox.find({ idUser: idUser })
+}
+
 module.exports = {
     getLastGame,
     getAllWordsCodes,
     getWord,
-    getRankingIdUser
+    getRankingIdUser,
+    getAllQuestionsCodes,
+    getQuestion,
+    getAllAnswersCodes,
+    getAnswer,
+    getFreeGames,
+    getGame,
+    getGameBoxesOwner,
+    getGames
 };

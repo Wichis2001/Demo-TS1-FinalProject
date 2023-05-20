@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = 4200;
+const PORT = 8080;
 //RUTAS
 const login = require('./v1/windows/login');
 const register = require('./v1/windows/register');
@@ -10,6 +10,7 @@ const rankings = require('./v1/windows/rankings');
 const scores = require('./v1/windows/scores');
 const medalTables = require('./v1/windows/medalTables');
 const scramble = require('./v1/windows/scramble')
+const preguntados = require('./v1/windows/preguntados')
 const game = require('./v1/windows/gameRoute')
     //DEFINIMOS EL USO DE JSON'S
 app.use(express.json());
@@ -37,6 +38,7 @@ app.use("/api", rankings);
 app.use("/api", scores);
 app.use("/api", medalTables);
 app.use("/api", scramble);
+app.use("/api", preguntados);
 app.use("/api", game);
 app.listen(PORT, function() {
     console.log('SERVER LISTENING ON PORT ' + PORT);

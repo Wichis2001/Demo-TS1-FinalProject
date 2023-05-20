@@ -23,6 +23,11 @@ router.route("/getCodeWords/:idGame").get(async function(request, response) {
     response.send(codesWords);
 });
 
+router.route("/getWord/:idWord").get(async function(request, response) {
+    const word = await getRC.getWord(request.params.idWord);
+    response.send(word.word);
+});
+
 router.route("/playScramble/:idWord/:answer").get(async function(request, response) {
     const { idWord, answer } = request.params;
     const word = await getRC.getWord(idWord);
