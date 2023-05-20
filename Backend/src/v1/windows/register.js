@@ -20,7 +20,7 @@ router.route("/login/create").post(async function(request, response) {
     if (insert && name != '' && password != '' && lastname != '' && nickname != '') {
         const insertData = await insert.save();
         initialConfig.addUserRank(insert.idUser);
-        response.send({ 'idUser': insert.idUser });
+        response.send( insert );
     } else {
         response.send('Datos inválidos');
     }
