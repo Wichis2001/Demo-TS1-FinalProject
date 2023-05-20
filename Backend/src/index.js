@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const app = express();
 const PORT = 8080;
 //RUTAS
@@ -13,6 +15,8 @@ const scramble = require('./v1/windows/scramble')
 const preguntados = require('./v1/windows/preguntados')
 const game = require('./v1/windows/gameRoute')
     //DEFINIMOS EL USO DE JSON'S
+//!Habilitar CORS
+app.use( cors() );
 app.use(express.json());
 //CONEXION CON LA BASE DE DATOS
 
@@ -30,7 +34,7 @@ async function start() {
 }
 start();
 
-//USO DE RUTAS 
+
 app.use("/api", login);
 app.use("/api", register);
 app.use("/api", notifications);
