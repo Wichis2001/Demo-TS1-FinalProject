@@ -14,40 +14,20 @@ export class LayoutPageComponent {
 
   public sidebarItems = [
     {
-      label: 'Usuarios',
-      icon: 'person',
-      url: './user'
+      label: 'Crear Juego',
+      icon: 'sports_esports',
+      url: './create-game'
     },
     {
-      label: 'Agregar',
-      icon: 'group_add',
-      url: './new-account'
+      label: 'Juegos Creados',
+      icon: 'list_alt',
+      url: './games-created'
     },
     {
-      label: 'Top 10 Productos Más Vendidos',
-      icon: 'plagiarism',
-      url: './produtos-vendidos'
+      label: 'Juegos Populares',
+      icon: 'groups',
+      url: './juegos-usuarios'
     },
-    {
-      label: 'Top 5 Clientes Más Ganancias',
-      icon: 'plagiarism',
-      url: './clientes-ganancias'
-    },
-    {
-      label: 'Top 5 Clientes Más Ventas',
-      icon: 'plagiarism',
-      url: './clientes-ventas'
-    },
-    {
-      label: 'Top 10 Clientes Más Pedidos',
-      icon: 'plagiarism',
-      url: './clientes-pedidos'
-    },
-    {
-      label: 'Top 10 Clientes Más Productos en Venta',
-      icon: 'plagiarism',
-      url: './clientes-productos'
-    }
   ]
 
   constructor( private authService: AuthService,

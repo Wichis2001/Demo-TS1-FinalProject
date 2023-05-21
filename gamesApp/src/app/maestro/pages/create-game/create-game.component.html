@@ -1,1 +1,86 @@
-<p>create-game works!</p>
+<h1>Crear un nuevo juego</h1>
+<mat-divider></mat-divider>
+<div class="grid bm-8 pt-2">
+  <div class="col-12 sm:col-6">
+    <form class="grid"
+          autocomplete="off"
+          [formGroup]="miFormulario"
+          >
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Nombre</mat-label>
+        <input type="text"
+               matInput
+               required
+               formControlName="nameGame"
+               [readonly]="validarEscritura">
+      </mat-form-field>
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Password</mat-label>
+        <input type="text"
+               matInput
+               required
+               formControlName="passwrd"
+               [readonly]="validarEscritura">
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput
+                  type="text"
+                  required
+                  formControlName="descriptn"
+                  [readonly]="validarEscritura">
+        </textarea>
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label></mat-label>
+        <mat-select
+          formControlName="idModel"
+          required
+        >
+          <mat-option *ngFor="let game of games"
+            [value]="game.id">
+            {{ game.desc }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </form>
+    <div class="flex justify-content-between">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          (click)="establecerJuego()"
+          [disabled]="validarBotonForm()"
+        >
+          <mat-icon>add_circle</mat-icon>
+          Agregar Preguntas
+        </button>
+
+        <span></span>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="verificarBotones()"
+          (click)="guardarJuego()"
+        >
+          <mat-icon>add</mat-icon>
+          Publicar Juego
+        </button>
+
+
+    </div>
+  </div>
+  <div class="col-12 sm:col-6">
+    <div *ngIf="valor === 1">
+      <app-preguntados></app-preguntados>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { MaestroRoutingModule } from './maestro-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
+import { ScrambleComponent } from './components/scramble/scramble.component';
 
 
 
@@ -15,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateGameComponent,
     JuegosCreadosComponent,
     JuegosMasUsuariosComponent,
-    LayoutPageComponent
+    LayoutPageComponent,
+    PreguntadosComponent,
+    ScrambleComponent
   ],
   imports: [
     CommonModule,
