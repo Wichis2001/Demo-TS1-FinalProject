@@ -10,6 +10,18 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminModule)
+  },
+  {
+    path: 'estudiante',
+    loadChildren: () => import('./estudiante/estudiante.module').then( m => m.EstudianteModule)
+  },
+  {
+    path: 'maestro',
+    loadChildren: () => import('./maestro/maestro.module').then( m => m.MaestroModule)
+  },
+  {
     path: '404',
     component: Error404PageComponent
   },

@@ -1,23 +1,22 @@
 export interface AuthReponse {
-  usuario?: Usuario;
-  token?:   string;
-  msg?:     string;
+  userTemp?: Usuario;
   ok:       boolean
+  msg?:     string;
+
 }
 
 export interface Usuario {
-  nombre: string;
-  rol:    Role;
-  estado: boolean;
-  uid:    string;
+  idUser?:  string;
+  nickname: string;
+  name:     string;
+  lastname: string;
+  password: string;
+  rol:      Role;
+  _id?:     string;
 }
 
 export enum Role {
-  CommonRole = "COMMON_ROLE",
-  PackageRole = "PACKAGE_ROLE",
-  AdminRole = "ADMIN_ROLE"
-}
-
-export interface Imagen {
-  pathImagen:   string
+  admin        = 'admin',
+  maestro      = 'maestro',
+  estudiante   = 'estudiante'
 }

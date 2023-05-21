@@ -15,8 +15,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginPageComponent {
 
   miFormulario: FormGroup = this.fb.group({
-    nombre:   [ '', [Validators.required] ],
-    password: [ '', [Validators.required, Validators.minLength( 6 )]]
+    nickname:   [ '', [Validators.required] ],
+    password:   [ '', [Validators.required, Validators.minLength( 4 )]]
   });
 
   constructor( private fb: FormBuilder,
@@ -26,33 +26,27 @@ export class LoginPageComponent {
 
   login(){
 
-    const { nombre, password } = this.miFormulario.value;
+    const { nickname, password } = this.miFormulario.value;
 
-    this.authService.login( nombre, password )
-                        .subscribe( ok => {
-                          if( ok === true ){
-                            this.showSnackbar(`${this.authService.usuario.nombre[0].toUpperCase()}${this.authService.usuario.nombre.substring(1)} se ha iniciado tu sesión correctamente`)
-
-
-                            switch ( this.authService.usuario.rol ) {
-
-                              case 'COMMON_ROLE':
-                                this.router.navigateByUrl('/user');
+   this.authService.login( nickname, password )
+                       .subscribe( ok => {
+                         if( ok === true ){
+                            this.showSnackbar(`${this.authService.usuario.nickname[0].toUpperCase()}${this.authService.usuario.nickname.substring(1)} se ha iniciado tu sesión correctamente`);
+                            switch( this.authService.usuario.rol ) {
+                              case 'maestro':
+                                this.router.navigateByUrl('/maestro');
                               break;
-                              case 'PACKAGE_ROLE':
-                                this.router.navigateByUrl('/package')
+                              case 'estudiante':
+                                this.router.navigateByUrl('/estudiante');
                               break;
-                              case 'ADMIN_ROLE':
-                                this.router.navigateByUrl('/admin')
+                              case 'admin':
+                                this.router.navigateByUrl('/admin');
                               break;
-                              default:
-                                break;
                             }
-
-                          }else{
-                            Swal.fire( 'Error', ok, 'error')
-                          }
-                        })
+                         }else{
+                           Swal.fire( 'Error', ok, 'error')
+                         }
+                       })
   }
 
   showSnackbar( message: string ): void{
