@@ -14,7 +14,7 @@ router.route("/login").post(async function(request, response) {
             ok: true
         });
     } else {
-        response.send({
+        res.status( 400 ).send({
             ok: false,
             msg: `El usuario ${ nickname } no se encuentra registrado`
         })
