@@ -16,7 +16,7 @@ const preguntados = require('./v1/windows/preguntados')
 const game = require('./v1/windows/gameRoute')
     //DEFINIMOS EL USO DE JSON'S
 //!Habilitar CORS
-app.use( cors() );
+app.use( cors() );  
 app.use(express.json());
 //CONEXION CON LA BASE DE DATOS
 

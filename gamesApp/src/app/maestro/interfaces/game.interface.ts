@@ -1,8 +1,8 @@
 export interface Game {
   nameGame:  string;
-  passwrd:   string;
+  passwrd?:   string;
   descriptn: string;
-  idModel:   Models;
+  idModel:   string;
   idUser:    string;
   words?:    string[];
   scores:    number[];
@@ -13,7 +13,6 @@ export interface QuesAn {
   question: string;
   answers:  Answer[];
 }
-
 export interface Answer {
   answer: string;
   value:  string;
@@ -22,4 +21,12 @@ export interface Answer {
 export enum Models {
   ScrambleGame = 'M1',
   PreguntadosGame = 'M2'
+}
+
+export interface GameResponse {
+  idGame:  string;
+}
+
+export interface ScoreResponse {
+  score:   string;
 }

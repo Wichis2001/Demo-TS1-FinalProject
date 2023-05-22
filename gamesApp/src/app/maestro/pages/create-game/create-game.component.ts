@@ -22,7 +22,7 @@ export class CreateGameComponent implements OnInit{
 
   miFormulario: FormGroup = this.fb.group({
     nameGame:     [ '', [ Validators.required, Validators.minLength(4) ]],
-    passwrd:      [ '', [ Validators.required, Validators.minLength(4) ]],
+    passwrd:      [ '' ],
     descriptn:    [ '', [Validators.required, Validators.minLength(10)]],
     idModel:      new FormControl<Models>( Models.ScrambleGame )
   });
@@ -36,6 +36,7 @@ export class CreateGameComponent implements OnInit{
   ngOnInit(): void {
     this.gamesService.resetQuestion();
     this.gamesService.resetScores();
+    this.gamesService.resetWords();
   }
 
 
@@ -56,7 +57,6 @@ export class CreateGameComponent implements OnInit{
     this.validarBoton = false;
 
     const { idModel } = this.miFormulario.value;
-    console.log( idModel )
     switch ( idModel ) {
       case 'M1':
         this.valor = 1;
@@ -78,7 +78,7 @@ export class CreateGameComponent implements OnInit{
   }
 
   verificarBotones(): boolean {
-    if( this.gamesService.quesAn.length > 0 ){
+    if( this.gamesService.quesAn.length > 0 || this.gamesService.words.length > 0 ){
       return false;
     }
 
@@ -86,6 +86,31 @@ export class CreateGameComponent implements OnInit{
   }
 
   guardarJuego(){
+    const { nameGame, passwrd, descriptn, idModel } = this.miFormulario.value;
+    console.log( idModel )
+    switch ( idModel ) {
+      case 'M1':
+        this.gamesService.saveScramble( nameGame, passwrd, descriptn, idModel ).subscribe( res => {
+          this.showSnackbar( `El videojuego con el ID ${ res.idGame } fue creado correctamente`);
+          this.miFormulario.reset();
+        });
+        break;
+      case 'M2':
+        this.gamesService.savePreguntados( nameGame, passwrd, descriptn, idModel ).subscribe( res => {
+          this.showSnackbar( `El videojuego con el ID ${ res.idGame } fue creado correctamente`);
+          this.miFormulario.reset();
+        });
+        break;
+      default:
+        this.valor = 0;
+        break;
+    }
+    this.valor = 0;
+  }
 
+  showSnackbar( message: string ): void{
+    this.snackbar.open( message, 'ok', {
+      duration: 3500
+    })
   }
 }

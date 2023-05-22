@@ -49,15 +49,15 @@ export class PreguntadosComponent implements OnInit {
         },
         {
           answer: answer2,
-          value: 'true'
+          value: 'false'
         },
         {
           answer: answer3,
-          value: 'true'
+          value: 'false'
         },
         {
           answer: answer4,
-          value: 'true'
+          value: 'false'
         }
       ]
     }

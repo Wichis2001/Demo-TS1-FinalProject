@@ -20,7 +20,6 @@
         <mat-label>Password</mat-label>
         <input type="text"
                matInput
-               required
                formControlName="passwrd"
                [readonly]="validarEscritura">
       </mat-form-field>
@@ -79,8 +78,11 @@
     </div>
   </div>
   <div class="col-12 sm:col-6">
-    <div *ngIf="valor === 1">
+    <div *ngIf="valor === 2">
       <app-preguntados></app-preguntados>
+    </div>
+    <div *ngIf="valor === 1">
+      <app-scramble></app-scramble>
     </div>
   </div>
 </div>
