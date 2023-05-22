@@ -106,6 +106,8 @@ export class CreateGameComponent implements OnInit{
         break;
     }
     this.valor = 0;
+    this.validarEscritura = false;
+    this.validarBoton = true;
   }
 
   showSnackbar( message: string ): void{

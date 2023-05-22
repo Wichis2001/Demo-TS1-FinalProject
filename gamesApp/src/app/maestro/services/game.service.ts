@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Game, GameResponse, QuesAn } from '../interfaces/game.interface';
+import { Game, GameResponse, Games, QuesAn } from '../interfaces/game.interface';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Observable } from 'rxjs';
@@ -61,16 +61,6 @@ export class GameService {
                private authService: AuthService ) { }
 
   savePreguntados( nameGame: string, passwrd: string, descriptn: string, idModel: string ): Observable<GameResponse>{
-    if( passwrd === ''){
-      this._game = {
-        nameGame,
-        descriptn,
-        idModel,
-        idUser: this.authService.usuario.idUser!,
-        quesAns: this.quesAn,
-        scores: this.scores
-      }
-    }
 
     this._game = {
       nameGame,
@@ -104,6 +94,11 @@ export class GameService {
     this.resetWords();
     this.resetScores();
     return this.http.post<GameResponse>( url, body );
+  }
+
+  getGames(): Observable<Games[]>{
+    const url: string = `${this.baseUrl}/getGamesOwner/${ this.authService.usuario.idUser }`;
+    return this.http.get<Games[]>( url );
   }
 
 }

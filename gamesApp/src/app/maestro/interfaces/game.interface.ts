@@ -30,3 +30,13 @@ export interface GameResponse {
 export interface ScoreResponse {
   score:   string;
 }
+
+
+export interface Games {
+  _id:       string;
+  idGame:    string;
+  nameGame:  string;
+  passwrd:   null;
+  descriptn: string;
+  idModel:   string;
+}

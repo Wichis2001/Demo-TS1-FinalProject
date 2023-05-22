@@ -9,6 +9,8 @@ import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PreguntadosComponent } from './components/preguntados/preguntados.component';
 import { ScrambleComponent } from './components/scramble/scramble.component';
+import { IdModelPipe } from './pipes/id-model.pipe';
+import { PasswordPipe } from './pipes/password.pipe';
 
 
 
@@ -19,7 +21,9 @@ import { ScrambleComponent } from './components/scramble/scramble.component';
     JuegosMasUsuariosComponent,
     LayoutPageComponent,
     PreguntadosComponent,
-    ScrambleComponent
+    ScrambleComponent,
+    IdModelPipe,
+    PasswordPipe
   ],
   imports: [
     CommonModule,

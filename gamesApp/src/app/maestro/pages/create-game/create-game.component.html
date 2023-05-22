@@ -77,12 +77,12 @@
 
     </div>
   </div>
-  <div class="col-12 sm:col-6">
-    <div *ngIf="valor === 2">
-      <app-preguntados></app-preguntados>
-    </div>
-    <div *ngIf="valor === 1">
-      <app-scramble></app-scramble>
-    </div>
+  <div class="col-12 sm:col-6"
+       *ngIf="valor === 2">
+    <app-preguntados></app-preguntados>
+  </div>
+  <div class="col-12 sm:col-6"
+       *ngIf="valor === 1">
+    <app-scramble></app-scramble>
   </div>
 </div>

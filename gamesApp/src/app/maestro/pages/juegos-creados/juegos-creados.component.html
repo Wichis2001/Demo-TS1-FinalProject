@@ -1,1 +1,31 @@
-<p>juegos-creados works!</p>
+<h1>Listado de Juegos Creados</h1>
+<mat-divider></mat-divider>
+
+<br>
+
+<table mat-table [dataSource]="games">
+  <!-- Columna de Índice -->
+  <ng-container matColumnDef="No.">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let game; let i = index">{{ i + 1 }}</td>
+  </ng-container>
+  <!-- Columna de Estado -->
+  <ng-container matColumnDef="Nombre Juego">
+    <th mat-header-cell *matHeaderCellDef>Nombre Juego</th>
+    <td mat-cell *matCellDef="let game">{{ game.nameGame | titlecase }}</td>
+  </ng-container>
+  <!-- Columna de Estado -->
+  <ng-container matColumnDef="Password">
+    <th mat-header-cell *matHeaderCellDef>Password</th>
+    <td mat-cell *matCellDef="let game">{{ game.passwrd | password }}</td>
+  </ng-container>
+  <!-- Columna de Estado -->
+  <ng-container matColumnDef="Tipo de Juego">
+    <th mat-header-cell *matHeaderCellDef>Tipo de Juego</th>
+    <td mat-cell *matCellDef="let game">{{ game.idModel | idModel }}</td>
+  </ng-container>
+  <!-- Agregar las columnas a la tabla -->
+  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+</table>
+

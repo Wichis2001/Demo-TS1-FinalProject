@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../../services/game.service';
+import { Games } from '../../interfaces/game.interface';
 
 @Component({
   selector: 'app-juegos-creados',
@@ -6,6 +8,17 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class JuegosCreadosComponent {
+export class JuegosCreadosComponent implements OnInit{
 
+  columnas: string[] = ['No.', 'Nombre Juego', 'Password', 'Tipo de Juego'];
+  games: Games[] = [];
+
+  constructor( private gameService: GameService) {}
+
+  ngOnInit(): void {
+    this.gameService.getGames().subscribe( res => {
+      this.games = res;
+    })
+
+  }
 }
