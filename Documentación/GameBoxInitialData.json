@@ -116,21 +116,28 @@ db.answers.insert({
     idA: "A1",
     idQuestion: "QB1",
     answer: "Rojo, Azul y Verde",
-    value: "False"
+    value: "false"
 })
 
 db.answers.insert({
     idA: "A2",
     idQuestion: "QB1",
     answer: "Rojo, Azul y Morado",
-    value: "False"
+    value: "false"
 })
 
 db.answers.insert({
     idA: "A3",
     idQuestion: "QB1",
     answer: "Blanco y Celeste",
-    value: "True"
+    value: "true"
+})
+
+db.answers.insert({
+    idA: "A4",
+    idQuestion: "QB1",
+    answer: "Blanco y Dorado",
+    value: "false"
 })
 
 db.createCollection('notificacions');
