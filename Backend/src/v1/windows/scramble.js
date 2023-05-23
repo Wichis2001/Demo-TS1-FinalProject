@@ -24,7 +24,7 @@ router.route("/getCodeWords/:idGame").get(async function(request, response) {
 //GET EL TEXTO DE LA PALABRA - REQUERIMIENTOS: ID_WORD
 router.route("/getWord/:idWord").get(async function(request, response) {
     const word = await getRC.getWord(request.params.idWord);
-    response.send(word.word);
+    response.send({ 'word': word.word});
 });
 //GET PUNTAJE OBTENIDO SI GANASTE - REQUERIMIENTOS: ID_WORD, posible respuesta
 router.route("/playScramble/:idWord/:answer").get(async function(request, response) {
