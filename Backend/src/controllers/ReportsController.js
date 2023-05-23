@@ -30,7 +30,36 @@ async function getGamesWithMoreUsers(request, response) {
     response.json(array);
 }
 
+async function getGamesTeachers(request, response) {
+    const games = await getDC.getGamesToTeachers();
+    const array = [];
+    games.forEach(element => {
+        const gameInfoTemp = {
+            nickname: element.nickname,
+            countGames: element.gameBoxCount
+        }
+        array.push(gameInfoTemp);
+    });
+    response.json(array);
+}
+
+
+async function getCommentStudents(request, response) {
+    const commentsCount = await getDC.getCommentsStudents();
+    const array = [];
+    commentsCount.forEach(element => {
+        const commInfoTemp = {
+            nickname: element.nickname,
+            countComments: element.commentCount
+        }
+        array.push(commInfoTemp);
+    });
+    response.json(array);
+}
+
 module.exports = {
     getGamesWithMoreTimeUsed,
-    getGamesWithMoreUsers
+    getGamesWithMoreUsers,
+    getGamesTeachers,
+    getCommentStudents
 };

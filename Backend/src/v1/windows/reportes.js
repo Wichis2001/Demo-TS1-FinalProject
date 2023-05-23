@@ -17,8 +17,16 @@ router.get('/getGamesWithMoreTimeUsed/:idUser', async function(request, response
 router.get('/getGamesWithMoreUsers/:idUser', async function(request, response) {
     await rC.getGamesWithMoreUsers(request, response);
 });
+//                          REPORTES DEL ADMIN
+//GET DE LA CANTIDAD DE JUEGOS QUE HA CREADO CADA MAESTRO
+router.get('/getGamesTeachers', async function(request, response) {
+    await rC.getGamesTeachers(request, response);
+});
+//GET DE LA LOS USUARIOS QUE MAS HAN COMENTADO
+router.get('/getCommentStudents', async function(request, response) {
+    await rC.getCommentStudents(request, response);
+});
 
-//PROFESORES CON MAS JUEGOS
 //ESTUDIANTES CON MAS COMENTARIOS
 
 module.exports = router;

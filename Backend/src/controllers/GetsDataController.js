@@ -11,6 +11,7 @@ const Ranking = require('../models/rankings');
 const Score = require('../models/scores');
 const User = require('../models/users');
 const Word = require('../models/wordBoxes');
+const gameBoxes = require('../models/gameBoxes');
 
 async function getLastGame() {
     return await Game.findOne({ idGame: "G" + ((await Game.count()) + 1) })
@@ -195,6 +196,97 @@ async function getUser(idUser) {
     return await User.findOne({ idUser: idUser });
 }
 
+async function getGamesToTeachers() {
+    return await gameBoxes.aggregate([{
+            $lookup: {
+                from: "users",
+                localField: "idUser",
+                foreignField: "idUser",
+                as: "userInfo"
+            }
+        },
+        {
+            $match: {
+                "userInfo.rol": "maestro"
+            }
+        },
+        {
+            $group: {
+                _id: "$idUser",
+                gameBoxCount: { $sum: 1 }
+            }
+        },
+        {
+            $lookup: {
+                from: "users",
+                localField: "_id",
+                foreignField: "idUser",
+                as: "userDetails"
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                idUser: "$_id",
+                gameBoxCount: 1,
+                nickname: { $arrayElemAt: ["$userDetails.nickname", 0] }
+            }
+        },
+        {
+            $sort: {
+                gameBoxCount: -1
+            }
+        }
+    ])
+
+}
+
+
+async function getCommentsStudents() {
+    return await Comment.aggregate([{
+            $lookup: {
+                from: "users",
+                localField: "idUser",
+                foreignField: "idUser",
+                as: "userInfo"
+            }
+        },
+        {
+            $match: {
+                "userInfo.rol": "estudiante"
+            }
+        },
+        {
+            $group: {
+                _id: "$idUser",
+                commentCount: { $sum: 1 }
+            }
+        },
+        {
+            $lookup: {
+                from: "users",
+                localField: "_id",
+                foreignField: "idUser",
+                as: "userDetails"
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                idUser: "$_id",
+                commentCount: 1,
+                nickname: { $arrayElemAt: ["$userDetails.nickname", 0] }
+            }
+        },
+        {
+            $sort: {
+                commentCount: -1
+            }
+        }
+    ])
+
+}
+
 module.exports = {
     getLastGame,
     getAllWordsCodes,
@@ -211,5 +303,7 @@ module.exports = {
     getGamesMTPlayed,
     getGamesMoreUsers,
     getUsers,
-    getUser
+    getUser,
+    getGamesToTeachers,
+    getCommentsStudents
 };
