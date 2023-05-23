@@ -1,0 +1,27 @@
+<h3>Cuentannos tu experiencia {{ usuario.nickname }}!</h3>
+<mat-divider></mat-divider>
+
+<form class="grid"
+    autocomplete="off"
+    [formGroup]="miFormulario">
+
+  <mat-form-field class="col-12">
+    <mat-label>Comentario</mat-label>
+    <textarea matInput
+              type="text"
+              required
+              formControlName="information">
+    </textarea>
+  </mat-form-field>
+
+</form>
+
+<button mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="miFormulario.invalid"
+          (click)="publicarComentario()"
+  >
+    <mat-icon>add</mat-icon>
+    Publicar Comentario
+</button>

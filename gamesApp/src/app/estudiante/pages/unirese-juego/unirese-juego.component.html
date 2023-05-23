@@ -42,4 +42,25 @@
   </div>
   <div class="col-3"></div>
 </div>
+<br>
+<mat-divider></mat-divider>
+
+<br>
+
+<h2>Sección de Comenarios</h2>
+<mat-divider></mat-divider>
+
+<div class="grid pt-2">
+  <div class="col-12">
+    <app-caja-comentarios></app-caja-comentarios>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
+<div class="grid pt-2">
+  <div *ngFor="let comentario of jugarService.comentarios"
+       class="col-12">
+    <app-comentario-card [comentario]="comentario"></app-comentario-card>
+  </div>
+</div>
 

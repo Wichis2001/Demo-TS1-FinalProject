@@ -1,1 +1,32 @@
-<p>juego works!</p>
+<h1>Juego de {{ juego.nameGame | titlecase }}</h1>
+
+<div *ngIf="definidorTipo===true">
+
+  <div class="grid bm-8 pt-2">
+
+    <div *ngFor="let idWord of arregloPalabras; let i = index"
+         class="col-12">
+      <div *ngIf="currentIndex === i">
+        <app-scramble [idWord]="idWord" (puntaje)="determinarPuntaje( $event )" (cantidadIntentos)="determinarIntento( $event )"></app-scramble>
+      </div>
+
+    </div>
+
+    <div *ngIf="showNext">
+      <button mat-button
+              mat-raised
+              (click)="mostrarSiguiente()"
+      >
+        <mat-icon>done</mat-icon>
+          Continuar el juego
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="definidorTipo===false">
+
+</div>
+

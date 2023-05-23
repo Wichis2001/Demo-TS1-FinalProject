@@ -14,7 +14,7 @@ export class UnireseJuegoComponent implements OnInit{
   columnas: string[] = ['No.', 'Jugador', 'Score'];
   scores: Score[] = [];
 
-  constructor( private jugarService: JugarService ) {}
+  constructor( public jugarService: JugarService ) {}
 
   ngOnInit(): void {
     this.juego = this.jugarService.juegoActual;
@@ -22,5 +22,7 @@ export class UnireseJuegoComponent implements OnInit{
     this.jugarService.getScoresGame( this.juego.idGame ).subscribe( res => {
       this.scores = res;
     })
+
+    this.jugarService.getComentarios();
   }
 }

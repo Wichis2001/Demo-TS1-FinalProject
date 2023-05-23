@@ -15,6 +15,9 @@ import { JuegoCardComponent } from './components/juego-card/juego-card.component
 import { IdModelPipe } from './pipes/id-model.pipe';
 import { PasswordPipe } from './pipes/password.pipe';
 import { PlayGameCardComponent } from './components/play-game-card/play-game-card.component';
+import { CajaComentariosComponent } from './components/caja-comentarios/caja-comentarios.component';
+import { ComentarioCardComponent } from './components/comentario-card/comentario-card.component';
+import { ScrambleComponent } from './components/scramble/scramble.component';
 
 
 
@@ -31,7 +34,10 @@ import { PlayGameCardComponent } from './components/play-game-card/play-game-car
     JuegoCardComponent,
     IdModelPipe,
     PasswordPipe,
-    PlayGameCardComponent
+    PlayGameCardComponent,
+    CajaComentariosComponent,
+    ComentarioCardComponent,
+    ScrambleComponent
   ],
   imports: [
     CommonModule,

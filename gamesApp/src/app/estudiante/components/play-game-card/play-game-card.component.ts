@@ -3,6 +3,7 @@ import { Juego } from '../../interfaces/juego.interface';
 import { JugarService } from '../../services/jugar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play-game-card',
@@ -19,7 +20,8 @@ export class PlayGameCardComponent {
 
   constructor( private jugarService: JugarService,
                private snackbar: MatSnackBar,
-               private fb: FormBuilder) {}
+               private fb: FormBuilder,
+               private router: Router) {}
 
   validarFormulario(): boolean {
     if( this.jugarService.juegoActual.passwrd !== null && this.jugarService.juegoActual.passwrd !== '' ){
@@ -40,6 +42,7 @@ export class PlayGameCardComponent {
                               .subscribe( res => {
                                 if( res === 'correct'){
                                   this.showSnackbar('Contraseña es correcta');
+                                  this.router.navigateByUrl(`/estudiante/play/${ this.jugarService.juegoActual.idGame }`)
                                   return;
                                 } else{
                                   this.showSnackbar('Contraseña es incorrecta');
@@ -48,7 +51,7 @@ export class PlayGameCardComponent {
                                 }
                               })
     } else{
-      
+      this.router.navigateByUrl(`/estudiante/play/${ this.jugarService.juegoActual.idGame }`)
     }
   }
 
