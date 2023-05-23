@@ -1,3 +1,4 @@
+const addDC = require('../controllers/AddDataController');
 const Game = require('../models/games');
 const User = require('../models/users');
 const Medal = require('../models/medals');
@@ -22,9 +23,24 @@ async function getTypeMedal(idMedal) {
     return tempMedal.tipo;
 }
 
+async function addComment(request, response) {
+    const { idUser, idGame, information } = request.body;
+
+    const insertComment = {
+        idUser: idUser,
+        idGame: idGame,
+        information: information
+    }
+
+    const comentInsert = await addDC.addData(insertComment, 'Comment');
+
+    response.json(comentInsert);
+}
+
 module.exports = {
     getNameGame,
     getNameUser,
     getTypeMedal,
-    getDescrpMedal
+    getDescrpMedal,
+    addComment
 };
