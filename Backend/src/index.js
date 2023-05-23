@@ -8,6 +8,7 @@ const PORT = 8080;
 const login = require('./v1/windows/login');
 const register = require('./v1/windows/register');
 const notifications = require('./v1/windows/notifications');
+const comments = require('./v1/windows/comentarios');
 const rankings = require('./v1/windows/rankings');
 const scores = require('./v1/windows/scores');
 const medalTables = require('./v1/windows/medalTables');
@@ -15,8 +16,8 @@ const scramble = require('./v1/windows/scramble')
 const preguntados = require('./v1/windows/preguntados')
 const game = require('./v1/windows/gameRoute')
     //DEFINIMOS EL USO DE JSON'S
-//!Habilitar CORS
-app.use( cors() );
+    //!Habilitar CORS
+app.use(cors());
 app.use(express.json());
 //CONEXION CON LA BASE DE DATOS
 
@@ -38,6 +39,7 @@ start();
 app.use("/api", login);
 app.use("/api", register);
 app.use("/api", notifications);
+app.use("/api", comments);
 app.use("/api", rankings);
 app.use("/api", scores);
 app.use("/api", medalTables);

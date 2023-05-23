@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route("/getMedalTable/:idUser").get(async function(request, response) {
 
-    const { idUser } = request.params.idUser;
+    const idUser = request.params.idUser;
     const mdTemp = await MedalTable.find({ idUser: idUser });
     const arrayMD = [];
 
