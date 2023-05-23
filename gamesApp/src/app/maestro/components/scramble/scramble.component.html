@@ -1,0 +1,37 @@
+<form class="grid"
+    autocomplete="off"
+    [formGroup]="miFormulario">
+
+    <mat-form-field class="col-12">
+      <mat-label>Palabra</mat-label>
+      <input
+        matInput
+        type="text"
+        required
+        formControlName="word"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+      <mat-label>Score</mat-label>
+      <input
+        matInput
+        type="number"
+        required
+        min="1"
+        formControlName="score"
+      />
+    </mat-form-field>
+  </form>
+
+  <div class="col-12">
+    <button mat-flat-button
+            color="warn"
+            type="submit"
+            [disabled]="miFormulario.invalid"
+            (click)="guardarPalabra()"
+    >
+      <mat-icon>new_label</mat-icon>
+      Guardar
+    </button>
+  </div>

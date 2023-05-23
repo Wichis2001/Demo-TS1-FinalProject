@@ -59,7 +59,7 @@ db.games.insert({
     idGame: "G1",
     nameGame: "Adivina la Palabra",
     passwrd: "",
-    descriptn: "Tienes que encontrar el orden correcto de una palabra"
+    descriptn: "Tienes que encontrar el orden correcto de una palabra",
     idModel: "M1"
 });
 
@@ -67,7 +67,7 @@ db.games.insert({
     idGame: "G2",
     nameGame: "Preguntados BETA",
     passwrd: "",
-    descriptn: "Contesta correctamente a todas las palabras"
+    descriptn: "Contesta correctamente a todas las palabras",
     idModel: "M2"
 });
 
@@ -116,21 +116,28 @@ db.answers.insert({
     idA: "A1",
     idQuestion: "QB1",
     answer: "Rojo, Azul y Verde",
-    value: "False"
+    value: "false"
 })
 
 db.answers.insert({
     idA: "A2",
     idQuestion: "QB1",
     answer: "Rojo, Azul y Morado",
-    value: "False"
+    value: "false"
 })
 
 db.answers.insert({
     idA: "A3",
     idQuestion: "QB1",
     answer: "Blanco y Celeste",
-    value: "True"
+    value: "true"
+})
+
+db.answers.insert({
+    idA: "A4",
+    idQuestion: "QB1",
+    answer: "Blanco y Dorado",
+    value: "false"
 })
 
 db.createCollection('notificacions');

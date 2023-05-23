@@ -9,12 +9,16 @@ router.route("/login").post(async function(request, response) {
     const userTemp = await User.findOne({ nickname, password });
 
     if (userTemp) {
-        response.send({ 'idUser': userTemp.idUser });
+        response.send({
+            userTemp,
+            ok: true
+        });
     } else {
-        response.send({ 'idUser': '' });
+        response.status( 400 ).send({
+            ok: false,
+            msg: `El usuario ${ nickname } no se encuentra registrado`
+        })
     }
 });
-
-
 
 module.exports = router;
