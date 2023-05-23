@@ -122,4 +122,6 @@ export class GameService {
     return this.http.get<Reporte[]>( url );
   }
 
+  
+
 }

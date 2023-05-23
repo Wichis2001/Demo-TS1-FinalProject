@@ -9,7 +9,7 @@ router.route("/getCodesQuestions/:idGame").get(async function(request, response)
 //GET TEXTO DE LA PREGUNTA DEL JUEGO - REQUERIMIENTOS: ID_QUESTION
 router.route("/getQuestion/:idQuest").get(async function(request, response) {
     const question = await getRC.getQuestion(request.params.idQuest);
-    response.send(question.question);
+    response.send(question);
 });
 //GET DE LOS CODIGOS DE LAS RESPUESTA DE UN JUEGO - REQUERIMIENTO:ID_QUESTION
 router.route("/getCodesAnswers/:idQuest").get(async function(request, response) {
