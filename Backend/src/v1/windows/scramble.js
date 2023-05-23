@@ -34,7 +34,7 @@ router.route("/playScramble/:idWord/:answer").get(async function(request, respon
     if (word.word == answer) {
         points = word.score;
     }
-    response.send(points.toString());
+    response.send({ score: points });
 });
 
 module.exports = router;
