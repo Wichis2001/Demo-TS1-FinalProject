@@ -7,7 +7,6 @@ import { NotificacionesComponent } from './pages/notificaciones/notificaciones.c
 import { RankinsComponent } from './pages/rankins/rankins.component';
 import { JuegosDisponiblesComponent } from './pages/juegos-disponibles/juegos-disponibles.component';
 import { JuegoComponent } from './pages/juego/juego.component';
-import { JuegosConContraseniaComponent } from './pages/juegos-con-contrasenia/juegos-con-contrasenia.component';
 import { JuegosSinContraseniaComponent } from './pages/juegos-sin-contrasenia/juegos-sin-contrasenia.component';
 
 
@@ -20,10 +19,6 @@ const routes: Routes = [
       {
         path: 'list-games',
         component: JuegosDisponiblesComponent
-      },
-      {
-        path: 'list-games-password',
-        component: JuegosConContraseniaComponent
       },
       {
         path: 'list-games-without-password',

@@ -80,6 +80,17 @@ export class GameService {
   }
 
   saveScramble( nameGame: string, passwrd: string, descriptn: string, idModel: string ): Observable<GameResponse>{
+    if( passwrd=== null || passwrd === '' ){
+      this._game = {
+        nameGame,
+        descriptn,
+        idModel,
+        idUser: this.authService.usuario.idUser!,
+        words: this.words,
+        scores: this.scores
+      }
+    }
+
     this._game = {
       nameGame,
       passwrd,

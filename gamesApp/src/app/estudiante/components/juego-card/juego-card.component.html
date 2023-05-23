@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ juego.nameGame| titlecase }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="mt-2">
+    <p>
+      <strong>Descripción:</strong> {{ juego.descriptn }}
+      <br>
+      <mat-chip-listbox>
+        <mat-chip>
+          {{ juego.idModel | idModel }}
+        </mat-chip>
+        <mat-chip>
+          {{ juego.passwrd | password }}
+        </mat-chip>
+      </mat-chip-listbox>
+    </p>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+
+
+  <mat-card-actions>
+    <div class="spacer"></div>
+    <button mat-button
+            [routerLink]="['/estudiante/join-game', juego.idGame]"
+            mat-raised
+            (click)="guardarJuego()">
+      <mat-icon>play_circle</mat-icon>
+        Jugar
+    </button>
+    <div class="spacer"></div>
+
+  </mat-card-actions>
+
+</mat-card>

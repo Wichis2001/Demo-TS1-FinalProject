@@ -20,11 +20,6 @@ export class LayoutPageComponent {
       url: './list-games'
     },
     {
-      label: 'Juegos Contraseña',
-      icon: 'key',
-      url: './list-games-password'
-    },
-    {
       label: 'Juegos Sin Contraseña',
       icon: 'key_off',
       url: './list-games-without-password'
