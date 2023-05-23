@@ -18,4 +18,7 @@ router.get('/getGamesWithMoreUsers/:idUser', async function(request, response) {
     await rC.getGamesWithMoreUsers(request, response);
 });
 
+//PROFESORES CON MAS JUEGOS
+//ESTUDIANTES CON MAS COMENTARIOS
+
 module.exports = router;

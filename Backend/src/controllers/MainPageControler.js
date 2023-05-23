@@ -37,10 +37,25 @@ async function addComment(request, response) {
     response.json(comentInsert);
 }
 
+async function addNotification(request, response) {
+    const { idUser, idGame, descriptn } = request.body;
+
+    const insertComment = {
+        idUser: idUser,
+        idGame: idGame,
+        descriptn: descriptn
+    }
+
+    const notificationInsert = await addDC.addData(insertComment, 'Notification');
+
+    response.json(notificationInsert);
+}
+
 module.exports = {
     getNameGame,
     getNameUser,
     getTypeMedal,
     getDescrpMedal,
-    addComment
+    addComment,
+    addNotification
 };

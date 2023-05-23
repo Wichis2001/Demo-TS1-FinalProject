@@ -16,6 +16,7 @@ const scramble = require('./v1/windows/scramble')
 const preguntados = require('./v1/windows/preguntados')
 const game = require('./v1/windows/gameRoute')
 const reports = require('./v1/windows/reportes')
+const admin = require('./v1/windows/admin')
     //DEFINIMOS EL USO DE JSON'S
     //!Habilitar CORS
 app.use(cors());
@@ -48,6 +49,7 @@ app.use("/api", scramble);
 app.use("/api", preguntados);
 app.use("/api", game);
 app.use("/api", reports);
+app.use("/api", admin);
 app.listen(PORT, function() {
     console.log('SERVER LISTENING ON PORT ' + PORT);
 });

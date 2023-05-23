@@ -187,7 +187,13 @@ async function getGamesMoreUsers(idUser) {
 
 }
 
+async function getUsers(rol) {
+    return await User.find({ rol: rol });
+}
 
+async function getUser(idUser) {
+    return await User.findOne({ idUser: idUser });
+}
 
 module.exports = {
     getLastGame,
@@ -203,5 +209,7 @@ module.exports = {
     getGameBoxesOwner,
     getGames,
     getGamesMTPlayed,
-    getGamesMoreUsers
+    getGamesMoreUsers,
+    getUsers,
+    getUser
 };

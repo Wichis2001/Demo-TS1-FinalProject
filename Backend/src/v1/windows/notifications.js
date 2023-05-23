@@ -21,7 +21,9 @@ router.route("/getNotifications/:idUser").get(async function(request, response) 
     }
     response.json(arrayNot);
 });
-
-
+//AGREGAR NOTIFICACION
+router.route("/addNotification").post(async function(request, response) {
+    await mainControler.addNotification(request, response);
+});
 
 module.exports = router;
