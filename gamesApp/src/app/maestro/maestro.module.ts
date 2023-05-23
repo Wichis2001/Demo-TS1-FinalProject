@@ -11,6 +11,7 @@ import { PreguntadosComponent } from './components/preguntados/preguntados.compo
 import { ScrambleComponent } from './components/scramble/scramble.component';
 import { IdModelPipe } from './pipes/id-model.pipe';
 import { PasswordPipe } from './pipes/password.pipe';
+import { JuegosMasJugadosComponent } from './pages/juegos-mas-jugados/juegos-mas-jugados.component';
 
 
 
@@ -23,7 +24,8 @@ import { PasswordPipe } from './pipes/password.pipe';
     PreguntadosComponent,
     ScrambleComponent,
     IdModelPipe,
-    PasswordPipe
+    PasswordPipe,
+    JuegosMasJugadosComponent
   ],
   imports: [
     CommonModule,

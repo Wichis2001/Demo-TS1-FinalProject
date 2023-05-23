@@ -40,3 +40,9 @@ export interface Games {
   descriptn: string;
   idModel:   string;
 }
+
+export interface Reporte {
+  nameGame: string;
+  times?:   number;
+  users?:   number;
+}

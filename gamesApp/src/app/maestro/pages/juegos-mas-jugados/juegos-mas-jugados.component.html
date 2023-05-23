@@ -1,4 +1,4 @@
-<h1>Juegos Con Más Usuarios</h1>
+<h1>Juegos Que Más Veces Han Sido Jugados</h1>
 <mat-divider></mat-divider>
 
 <br>
@@ -15,9 +15,9 @@
     <td mat-cell *matCellDef="let reporte">{{ reporte.nameGame | titlecase }}</td>
   </ng-container>
   <!-- Columna de Estado -->
-  <ng-container matColumnDef="Cantidad de Usuarios">
-    <th mat-header-cell *matHeaderCellDef>Cantidad de Usuarios</th>
-    <td mat-cell *matCellDef="let reporte">{{ reporte.users  }}</td>
+  <ng-container matColumnDef="Cantidad de Intentos">
+    <th mat-header-cell *matHeaderCellDef>Cantidad de Intentos</th>
+    <td mat-cell *matCellDef="let reporte">{{ reporte.times  }}</td>
   </ng-container>
   <!-- Agregar las columnas a la tabla -->
   <tr mat-header-row *matHeaderRowDef="columnas"></tr>

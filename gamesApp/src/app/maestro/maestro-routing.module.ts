@@ -4,6 +4,7 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { CreateGameComponent } from './pages/create-game/create-game.component';
 import { JuegosCreadosComponent } from './pages/juegos-creados/juegos-creados.component';
 import { JuegosMasUsuariosComponent } from './pages/juegos-mas-usuarios/juegos-mas-usuarios.component';
+import { JuegosMasJugadosComponent } from './pages/juegos-mas-jugados/juegos-mas-jugados.component';
 
 
 
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'juegos-usuarios',
         component: JuegosMasUsuariosComponent
+      },
+      {
+        path: 'juegos-jugados',
+        component: JuegosMasJugadosComponent
       },
       {
         path: '**',

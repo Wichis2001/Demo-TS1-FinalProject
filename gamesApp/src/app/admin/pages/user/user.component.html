@@ -1,1 +1,71 @@
-<p>user works!</p>
+<h1>Crear un nuevo Usuario</h1>
+<mat-divider></mat-divider>
+<div class="grid bm-8 pt-2">
+  <div class="col-12">
+    <form class="grid"
+          autocomplete="off"
+          [formGroup]="miFormulario"
+          >
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Nickname</mat-label>
+        <input type="text"
+               matInput
+               required
+               formControlName="nickname">
+      </mat-form-field>
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Name</mat-label>
+        <input type="text"
+               matInput
+               required
+               formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Lastname</mat-label>
+        <input type="text"
+               matInput
+               required
+               formControlName="lastname">
+      </mat-form-field>
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Password</mat-label>
+        <input type="text"
+               matInput
+               formControlName="passwrd">
+      </mat-form-field>
+
+
+    </form>
+  </div>
+  <div class="col-12">
+    <div class="flex justify-content-between">
+
+      <!-- <button mat-flat-button
+              color="primary"
+              type="submit"
+              (click)="establecerJuego()"
+              [disabled]=""
+      >
+        <mat-icon>add_circle</mat-icon>
+        Agregar Preguntas
+      </button> -->
+
+      <span></span>
+
+      <!-- <button mat-flat-button
+              color="primary"
+              type="submit"
+              [disabled]="verificarBotones()"
+              (click)="guardarJuego()"
+      >
+        <mat-icon>add</mat-icon>
+        Publicar Juego
+      </button> -->
+
+    </div>
+  </div>
+</div>

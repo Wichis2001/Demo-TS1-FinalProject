@@ -24,9 +24,14 @@ export class LayoutPageComponent {
       url: './games-created'
     },
     {
-      label: 'Juegos Populares',
+      label: 'Juegos Más Usurios',
       icon: 'groups',
       url: './juegos-usuarios'
+    },
+    {
+      label: 'Juegos Más Jugados',
+      icon: 'groups',
+      url: './juegos-jugados'
     },
   ]
 

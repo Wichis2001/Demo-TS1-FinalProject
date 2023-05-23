@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Game, GameResponse, Games, QuesAn } from '../interfaces/game.interface';
+import { Game, GameResponse, Games, QuesAn, Reporte } from '../interfaces/game.interface';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Observable } from 'rxjs';
@@ -110,6 +110,16 @@ export class GameService {
   getGames(): Observable<Games[]>{
     const url: string = `${this.baseUrl}/getGamesOwner/${ this.authService.usuario.idUser }`;
     return this.http.get<Games[]>( url );
+  }
+
+  getJuegosMasJugados(): Observable<Reporte[]>{
+    const url: string = `${this.baseUrl}/getGamesWithMoreTimeUsed/${ this.authService.usuario.idUser }`;
+    return this.http.get<Reporte[]>( url );
+  }
+
+  getJuegosMasUsuarios(): Observable<Reporte[]>{
+    const url: string = `${this.baseUrl}/getGamesWithMoreUsers/${ this.authService.usuario.idUser }`;
+    return this.http.get<Reporte[]>( url );
   }
 
 }
