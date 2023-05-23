@@ -80,6 +80,115 @@ async function getGameBoxesOwner(idUser) {
     return await GameBox.find({ idUser: idUser })
 }
 
+async function getGamesMTPlayed(idUser) {
+    return await Score.aggregate([{
+            $lookup: {
+                from: "games",
+                localField: "idGame",
+                foreignField: "idGame",
+                as: "gameInfo"
+            }
+        },
+        {
+            $lookup: {
+                from: "game_boxes",
+                localField: "idGame",
+                foreignField: "idGame",
+                as: "gameBoxInfo"
+            }
+        },
+        {
+            $match: {
+                "gameBoxInfo.idUser": idUser
+            }
+        },
+        {
+            $group: {
+                _id: "$idGame",
+                userCount: { $sum: 1 }
+            }
+        },
+        {
+            $lookup: {
+                from: "games",
+                localField: "_id",
+                foreignField: "idGame",
+                as: "gameInfo"
+            }
+        },
+        {
+            $sort: {
+                userCount: -1
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                idGame: "$_id",
+                userCount: 1,
+                nameGame: { $arrayElemAt: ["$gameInfo.nameGame", 0] }
+            }
+        }
+    ])
+
+}
+
+async function getGamesMoreUsers(idUser) {
+    return await Score.aggregate([{
+            $lookup: {
+                from: "games",
+                localField: "idGame",
+                foreignField: "idGame",
+                as: "gameInfo"
+            }
+        },
+        {
+            $lookup: {
+                from: "game_boxes",
+                localField: "idGame",
+                foreignField: "idGame",
+                as: "gameBoxInfo"
+            }
+        },
+        {
+            $match: {
+                "gameBoxInfo.idUser": idUser
+            }
+        },
+        {
+            $group: {
+                _id: "$idGame",
+                userCount: { $addToSet: "$idUser" }
+            }
+        },
+        {
+            $lookup: {
+                from: "games",
+                localField: "_id",
+                foreignField: "idGame",
+                as: "gameInfo"
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                idGame: "$_id",
+                userCount: { $size: "$userCount" },
+                nameGame: { $arrayElemAt: ["$gameInfo.nameGame", 0] }
+            }
+        },
+        {
+            $sort: {
+                userCount: -1
+            }
+        }
+    ])
+
+
+}
+
+
+
 module.exports = {
     getLastGame,
     getAllWordsCodes,
@@ -92,5 +201,7 @@ module.exports = {
     getFreeGames,
     getGame,
     getGameBoxesOwner,
-    getGames
+    getGames,
+    getGamesMTPlayed,
+    getGamesMoreUsers
 };
