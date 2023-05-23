@@ -6,6 +6,12 @@ import { NotificacionesComponent } from './pages/notificaciones/notificaciones.c
 import { JuegosDisponiblesComponent } from './pages/juegos-disponibles/juegos-disponibles.component';
 import { RankinsComponent } from './pages/rankins/rankins.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { JuegosSinContraseniaComponent } from './pages/juegos-sin-contrasenia/juegos-sin-contrasenia.component';
+import { JuegosConContraseniaComponent } from './pages/juegos-con-contrasenia/juegos-con-contrasenia.component';
+import { JuegoComponent } from './pages/juego/juego.component';
+import { MaterialModule } from '../material/material.module';
+import { EstudianteRoutingModule } from './estudiante-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,10 +22,16 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
     NotificacionesComponent,
     JuegosDisponiblesComponent,
     RankinsComponent,
-    LayoutPageComponent
+    LayoutPageComponent,
+    JuegosSinContraseniaComponent,
+    JuegosConContraseniaComponent,
+    JuegoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    EstudianteRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EstudianteModule { }
