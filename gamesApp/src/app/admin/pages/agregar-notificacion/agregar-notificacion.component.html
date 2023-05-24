@@ -1,0 +1,62 @@
+<h1> Agregar Notificación</h1>
+
+<mat-divider></mat-divider>
+<div class="grid bm-8 pt-2">
+  <div class="col-12">
+    <form class="grid"
+          autocomplete="off"
+          [formGroup]="miFormulario"
+          >
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Titulo</mat-label>
+        <input type="text"
+               matInput
+               required
+               formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput
+                  type="text"
+                  required
+                  formControlName="descriptn">
+        </textarea>
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Selecciona un Rol</mat-label>
+        <mat-select
+          formControlName="idModel"
+          required
+        >
+          <mat-option *ngFor="let game of games"
+            [value]="game.id">
+            {{ game.desc }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </form>
+  </div>
+  <div class="col-12">
+    <div class="flex justify-content-between">
+      <span></span>
+      <button
+            mat-flat-button
+            color="primary"
+            (click)="onSubmit()"
+            [disabled]="miFormulario.invalid"
+          >
+            <mat-icon>send</mat-icon>
+            Publicar
+      </button>
+
+      <span></span>
+
+
+    </div>
+  </div>
+</div>

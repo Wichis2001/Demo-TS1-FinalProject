@@ -43,6 +43,11 @@ export class LayoutPageComponent {
       icon: 'summarize',
       url: './usuarios-comentarios'
     },
+    {
+      label: 'Agregar Notificacion',
+      icon: 'notifications_active',
+      url: './agregar-notificacion'
+    },
   ]
 
   constructor( private authService: AuthService,

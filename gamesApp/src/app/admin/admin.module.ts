@@ -11,6 +11,7 @@ import { UsuariosAdministradoresComponent } from './pages/usuarios-administrador
 import { UsuariosEstudiantesComponent } from './pages/usuarios-estudiantes/usuarios-estudiantes.component';
 import { UsuariosMaestrosComponent } from './pages/usuarios-maestros/usuarios-maestros.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { AgregarNotificacionComponent } from './pages/agregar-notificacion/agregar-notificacion.component';
 
 
 
@@ -23,7 +24,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     UsuariosAdministradoresComponent,
     UsuariosEstudiantesComponent,
     UsuariosMaestrosComponent,
-    UserCardComponent
+    UserCardComponent,
+    AgregarNotificacionComponent
   ],
   imports: [
     CommonModule,

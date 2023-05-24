@@ -123,19 +123,12 @@ export class JugarService {
   shuffleArray<T>(array: T[]): T[] {
     const newArray = [...array]; // Crear una copia del arreglo original
 
-    // Desordenar el arreglo utilizando el algoritmo de Fisher-Yates
     for (let i = newArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1)); // Generar un índice aleatorio
 
       // Intercambiar elementos utilizando la destructuración de arreglos
       [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-
-    // Obtener una posición aleatoria diferente de 0
-    const randomIndex = Math.floor(Math.random() * (newArray.length - 1)) + 1;
-
-    // Intercambiar el primer elemento con el elemento en la posición aleatoria
-    [newArray[0], newArray[randomIndex]] = [newArray[randomIndex], newArray[0]];
 
     return newArray;
   }

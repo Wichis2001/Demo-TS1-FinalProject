@@ -1,5 +1,5 @@
 export interface Notificaciones {
-  nameGame: string;
+  title: string;
   descriptn: string;
 }
 

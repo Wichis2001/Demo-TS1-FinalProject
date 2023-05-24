@@ -7,6 +7,7 @@ import { UsuariosComentariosComponent } from './pages/usuarios-comentarios/usuar
 import { UsuariosAdministradoresComponent } from './pages/usuarios-administradores/usuarios-administradores.component';
 import { UsuariosMaestrosComponent } from './pages/usuarios-maestros/usuarios-maestros.component';
 import { UsuariosEstudiantesComponent } from './pages/usuarios-estudiantes/usuarios-estudiantes.component';
+import { AgregarNotificacionComponent } from './pages/agregar-notificacion/agregar-notificacion.component';
 
 
 
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'usuarios-comentarios',
         component: UsuariosComentariosComponent
+      },
+      {
+        path: 'agregar-notificacion',
+        component: AgregarNotificacionComponent
       },
       {
         path: '**',

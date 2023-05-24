@@ -39,6 +39,7 @@ export class PreguntadosComponent {
                private cdr: ChangeDetectorRef ) {}
 
   ngOnInit(): void {
+    console.log( this.idPregunta )
     this.jugarService.getTextQuestion( this.idPregunta ).subscribe(
       question => this.pregunta = question.question
     );

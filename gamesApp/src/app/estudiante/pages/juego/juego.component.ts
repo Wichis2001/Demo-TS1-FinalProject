@@ -46,6 +46,7 @@ export class JuegoComponent implements OnInit{
       this.jugarService.getCodigosPregunta( this.jugarService.juegoActual.idGame )
                                   .subscribe( res => {
                                     this.arregloPreguntas = this.jugarService.shuffleArray( res );
+                                    console.log( this.arregloPreguntas )
                                   })
       this.definidorTipo = false;
 
