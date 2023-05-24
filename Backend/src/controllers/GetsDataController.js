@@ -81,6 +81,13 @@ async function getGameBoxesOwner(idUser) {
     return await GameBox.find({ idUser: idUser })
 }
 
+async function getRank(idUser) {
+    return await Ranking.find({ idUser: idUser })
+}
+
+async function getMedalTable(json) {
+    return await Ranking.findOne({ idUser: json.idUser, idMedal: json.idMedal })
+}
 async function getGamesMTPlayed(idUser) {
     return await Score.aggregate([{
             $lookup: {
@@ -305,5 +312,7 @@ module.exports = {
     getUsers,
     getUser,
     getGamesToTeachers,
-    getCommentsStudents
+    getCommentsStudents,
+    getRank,
+    getMedalTable
 };

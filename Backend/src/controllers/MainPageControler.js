@@ -1,4 +1,5 @@
 const addDC = require('../controllers/AddDataController');
+const getDC = require('../controllers/GetsDataController');
 const Game = require('../models/games');
 const User = require('../models/users');
 const Medal = require('../models/medals');
@@ -38,17 +39,19 @@ async function addComment(request, response) {
 }
 
 async function addNotification(request, response) {
-    const { idUser, title, descriptn } = request.body;
-
-    const insertComment = {
-        idUser: idUser,
-        title: title,
-        descriptn: descriptn
+    const { rol, title, descriptn } = request.body;
+    const arrayUsers = await getDC.getUsers(rol);
+    for (let index = 0; index < arrayUsers.length; index++) {
+        const element = arrayUsers[index];
+        const insertNot = {
+            idUser: element.idUser,
+            title: title,
+            descriptn: descriptn
+        }
+        const notificationInsert = await addDC.addData(insertNot, 'Notification');
     }
 
-    const notificationInsert = await addDC.addData(insertComment, 'Notification');
-
-    response.json(notificationInsert);
+    response.json({ status: "OK" });
 }
 
 module.exports = {

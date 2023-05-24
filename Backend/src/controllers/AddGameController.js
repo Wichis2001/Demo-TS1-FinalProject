@@ -1,6 +1,7 @@
 const addDC = require('../controllers/AddDataController');
 const getDC = require('../controllers/GetsDataController');
 const uptDC = require('../controllers/UpdateDataController');
+const medC = require('../controllers/MedalsController')
 
 async function newScramble(request, response) {
     const { nameGame, passwrd, descriptn, idUser, words, scores } = request.body;
@@ -102,7 +103,7 @@ async function addScore(request, response) {
     await addDC.addData(insertScore, 'Score');
     const rankingTemp = await getDC.getRankingIdUser(idUser);
     await uptDC.updateScoreRanking(rankingTemp._id, (rankingTemp.score + score));
-
+    await medC.addMedalRanking(idUser);
     response.json(score);
 
 }

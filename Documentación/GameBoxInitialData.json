@@ -42,7 +42,19 @@ db.createCollection('medals');
 db.medals.insert({
     idMedal: "M1",
     tipo: "Oro",
-    description: "Por ser el primer usuario registrado"
+    description: "Medalla de Oro por tener 300 puntos en el ranking global"
+});
+
+db.medals.insert({
+    idMedal: "M2",
+    tipo: "Plata",
+    description: "Medalla de Oro por tener 200 puntos en el ranking global"
+});
+
+db.medals.insert({
+    idMedal: "M3",
+    tipo: "Bronce",
+    description: "Medalla de Oro por tener 100 puntos en el ranking global"
 });
 
 db.createCollection('medal_tables');
