@@ -32,7 +32,9 @@ router.route("/playPreguntados/:idQuest/:idAnswer").get(async function(request, 
     if (answer.value == 'true') {
         points = question.score;
     }
-    response.send(points.toString());
+    response.send({
+        score: points
+    });
 });
 
 module.exports = router;
