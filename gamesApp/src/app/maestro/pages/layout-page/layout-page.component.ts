@@ -33,6 +33,11 @@ export class LayoutPageComponent {
       icon: 'groups',
       url: './juegos-jugados'
     },
+    {
+      label: 'Notificaciones',
+      icon: 'notifications',
+      url: './notificaciones'
+    },
   ]
 
   constructor( private authService: AuthService,

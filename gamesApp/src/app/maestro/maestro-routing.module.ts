@@ -5,6 +5,7 @@ import { CreateGameComponent } from './pages/create-game/create-game.component';
 import { JuegosCreadosComponent } from './pages/juegos-creados/juegos-creados.component';
 import { JuegosMasUsuariosComponent } from './pages/juegos-mas-usuarios/juegos-mas-usuarios.component';
 import { JuegosMasJugadosComponent } from './pages/juegos-mas-jugados/juegos-mas-jugados.component';
+import { NotificacionesComponent } from './pages/notificaciones/notificaciones.component';
 
 
 
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'juegos-jugados',
         component: JuegosMasJugadosComponent
+      },
+      {
+        path: 'notificaciones',
+        component: NotificacionesComponent
       },
       {
         path: '**',

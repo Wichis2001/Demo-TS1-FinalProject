@@ -39,13 +39,13 @@ export class JuegoComponent implements OnInit{
     if( this.juego.idModel === 'M1'){
       this.jugarService.getCodigosPalabras( this.jugarService.juegoActual.idGame )
                                 .subscribe( res => {
-                                  this.arregloPalabras = res;
+                                  this.arregloPalabras = this.jugarService.shuffleArray(res);
                                 })
       this.definidorTipo = true;
     } else{
       this.jugarService.getCodigosPregunta( this.jugarService.juegoActual.idGame )
                                   .subscribe( res => {
-                                    this.arregloPreguntas = res;
+                                    this.arregloPreguntas = this.jugarService.shuffleArray( res );
                                   })
       this.definidorTipo = false;
 

@@ -35,7 +35,7 @@ export class PreguntadosComponent {
                private snackbar: MatSnackBar,
                private dialog: MatDialog,
                private fb: FormBuilder,
-               private jugarService: JugarService,
+               public jugarService: JugarService,
                private cdr: ChangeDetectorRef ) {}
 
   ngOnInit(): void {
@@ -48,6 +48,7 @@ export class PreguntadosComponent {
                           this.codigosRespuestas = res
                         } ))
                         .subscribe(()=>{
+                          this.codigosRespuestas = this.jugarService.shuffleArray( this.codigosRespuestas )
                           for (let x = 0; x < this.codigosRespuestas.length; x++) {
                             this.jugarService.getTextAnswer( this.codigosRespuestas[x] ).subscribe( res=>{
                               const preguntaAsignar: QuestionFinal = {
