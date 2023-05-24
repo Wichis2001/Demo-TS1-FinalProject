@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
-import { Comentario, ComentarioUsuario, Juego, Score, ScoreAgregar, ScorePlay, Scramble } from '../interfaces/juego.interface';
+import { Comentario, ComentarioUsuario, Juego, Question, RespuestaResponse, Score, ScoreAgregar, ScorePlay, Scramble } from '../interfaces/juego.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -93,5 +93,30 @@ export class JugarService {
     const url: string = `${this.baseUrl}/addPoints`;
     const body = score ;
     return this.http.post<ScoreAgregar>( url, body );
+  }
+
+  getCodigosPregunta( idGame: string ):  Observable<string[]>{
+    const url: string = `${this.baseUrl}/getCodesQuestions/${ idGame }`;
+    return this.http.get<string[]>( url );
+  }
+
+  getCodigosRespuesta( idGame: string ):  Observable<string[]>{
+    const url: string = `${this.baseUrl}/getCodesAnswers/${ idGame }`;
+    return this.http.get<string[]>( url );
+  }
+
+  getTextQuestion( idGame: string ):  Observable<Question>{
+    const url: string = `${this.baseUrl}/getQuestion/${ idGame }`;
+    return this.http.get<Question>( url );
+  }
+
+  getTextAnswer( idGame: string ):  Observable<RespuestaResponse>{
+    const url: string = `${this.baseUrl}/getAnswer/${ idGame }`;
+    return this.http.get<RespuestaResponse>( url );
+  }
+
+  getPuntajePreguntados( idQuest: string, idAnswer:string ): Observable<ScorePlay> {
+    const url: string = `${this.baseUrl}/playPreguntados/${ idQuest }/${ idAnswer }`;
+    return this.http.get<ScorePlay>( url );
   }
 }

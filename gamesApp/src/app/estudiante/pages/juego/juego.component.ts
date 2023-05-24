@@ -18,6 +18,7 @@ export class JuegoComponent implements OnInit{
   juego!: Juego;
   definidorTipo!: boolean;
   arregloPalabras: string[] = [];
+  arregloPreguntas: string[] = [];
   currentIndex: number = 0;
   showNext: boolean = false;
 
@@ -42,7 +43,12 @@ export class JuegoComponent implements OnInit{
                                 })
       this.definidorTipo = true;
     } else{
+      this.jugarService.getCodigosPregunta( this.jugarService.juegoActual.idGame )
+                                  .subscribe( res => {
+                                    this.arregloPreguntas = res;
+                                  })
       this.definidorTipo = false;
+
     }
   }
 
@@ -60,7 +66,7 @@ export class JuegoComponent implements OnInit{
     }
   }
 
-  mostrarSiguiente(){
+  validarSiguienteScramble(){
     this.currentIndex++;
     this.showNext = false;
     if (this.currentIndex < this.arregloPalabras.length ){
@@ -105,6 +111,49 @@ export class JuegoComponent implements OnInit{
     }
   }
 
+  validarSiguientePreguntados(){
+    this.currentIndex++;
+    this.showNext = false;
+    if (this.currentIndex < this.arregloPreguntas.length ){
+      if( this.cantidadIntentos > 0 && this.puntajeObtenido !== 0){
+        this.cumuloPuntaje = this.cumuloPuntaje + this.puntajeObtenido;
+      }
+      this.showSnackbar('Pasaste a la siguiente pregunta :D!');
+    } else {
+      if( this.cantidadIntentos > 0 && this.puntajeObtenido !== 0){
+        this.cumuloPuntaje = this.cumuloPuntaje + this.puntajeObtenido;
+      }
+
+      if( this.cumuloPuntaje > 0 ){
+        Swal.fire({
+          title: `Obtuviste ${ this.cumuloPuntaje} puntos Felicidades!`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+        this.scoreAgregar = {
+          idUser: this.authService.usuario.idUser,
+          idGame: this.jugarService.juegoActual.idGame,
+          score: this.cumuloPuntaje
+        }
+        this.jugarService.addPuntaje( this.scoreAgregar ).subscribe();
+      } else{
+        Swal.fire({
+          title: `Que lastima, obtuviste ${ this.cumuloPuntaje} puntos NO TE RINDAS!`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      }
+      this.router.navigateByUrl('/estudiante/list-games')
+    }
+  }
   showSnackbar( message: string ):void {
     this.snackbar.open( message, 'ok', {
       duration: 2500,

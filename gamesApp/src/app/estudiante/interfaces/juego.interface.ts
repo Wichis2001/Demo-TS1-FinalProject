@@ -37,3 +37,20 @@ export interface Scramble {
 export interface ScorePlay {
   score: number;
 }
+
+export interface Question {
+  _id: string;
+  idQB: string;
+  idGame: string;
+  question: string;
+  score: number;
+}
+
+export interface RespuestaResponse {
+  res: string;
+}
+
+export interface QuestionFinal {
+  idAnswer: string;
+  pregunta: string;
+}

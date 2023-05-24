@@ -18,6 +18,7 @@ import { PlayGameCardComponent } from './components/play-game-card/play-game-car
 import { CajaComentariosComponent } from './components/caja-comentarios/caja-comentarios.component';
 import { ComentarioCardComponent } from './components/comentario-card/comentario-card.component';
 import { ScrambleComponent } from './components/scramble/scramble.component';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
 
 
 
@@ -37,7 +38,8 @@ import { ScrambleComponent } from './components/scramble/scramble.component';
     PlayGameCardComponent,
     CajaComentariosComponent,
     ComentarioCardComponent,
-    ScrambleComponent
+    ScrambleComponent,
+    PreguntadosComponent
   ],
   imports: [
     CommonModule,
