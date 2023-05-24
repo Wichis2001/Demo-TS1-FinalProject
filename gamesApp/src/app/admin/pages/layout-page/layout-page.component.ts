@@ -14,9 +14,19 @@ export class LayoutPageComponent {
 
   public sidebarItems = [
     {
-      label: 'Usuarios Registrados',
+      label: 'Usuarios Administradores',
       icon: 'person',
-      url: './list-user'
+      url: './list-admin'
+    },
+    {
+      label: 'Usuarios Profesores',
+      icon: 'person',
+      url: './list-teacher'
+    },
+    {
+      label: 'Usuarios Estudiantes',
+      icon: 'person',
+      url: './list-student'
     },
     {
       label: 'Agregar Usuario',
@@ -29,9 +39,9 @@ export class LayoutPageComponent {
       url: './profesores-juegos'
     },
     {
-      label: 'Usuarios Más Puntos',
+      label: 'Usuarios Más Comentarios',
       icon: 'summarize',
-      url: './usuarios-puntos'
+      url: './usuarios-comentarios'
     },
   ]
 
