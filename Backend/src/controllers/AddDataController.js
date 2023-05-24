@@ -114,7 +114,7 @@ async function getInsert(lastRegister, jsonData, typeData) {
             insert = new Notification({
                 idNot: "N" + (lastRegister + 1),
                 idUser: jsonData.idUser,
-                idGame: jsonData.idGame,
+                title: jsonData.title,
                 descriptn: jsonData.descriptn
             });
             return await insert.save();

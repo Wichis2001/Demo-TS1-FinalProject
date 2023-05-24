@@ -13,7 +13,7 @@ router.route("/getNotifications/:idUser").get(async function(request, response) 
         const temp = notsTemp[index];
 
         const NotPage = {
-            nameGame: await mainControler.getNameGame(temp.idGame),
+            title: temp.title,
             descriptn: temp.descriptn
         };
 

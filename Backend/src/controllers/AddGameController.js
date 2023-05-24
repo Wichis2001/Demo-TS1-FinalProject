@@ -36,6 +36,7 @@ async function newScramble(request, response) {
             await addDC.addData(insertWord, 'Word');
         }
         response.json({ 'idGame': game.idGame });
+        return game.idGame;
     }
 }
 
@@ -85,6 +86,7 @@ async function newPreguntados(request, response) {
 
         }
         response.json({ 'idGame': game.idGame });
+        return game.idGame;
     }
 }
 

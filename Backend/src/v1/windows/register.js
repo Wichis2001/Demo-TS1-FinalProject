@@ -1,5 +1,6 @@
 const express = require('express');
 const initialConfig = require('../../controllers/InitialConfigControler');
+const notifControl = require('../../controllers/NotificationsController');
 const User = require('../../models/users');
 const router = express.Router();
 
@@ -20,7 +21,8 @@ router.route("/login/create").post(async function(request, response) {
     if (insert && name != '' && password != '' && lastname != '' && nickname != '') {
         const insertData = await insert.save();
         initialConfig.addUserRank(insert.idUser);
-        response.send( insert );
+        notifControl.addNotRegister(insert.idUser);
+        response.send(insert);
     } else {
         response.send('Datos inválidos');
     }

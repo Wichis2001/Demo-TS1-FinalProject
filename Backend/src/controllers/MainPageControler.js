@@ -38,11 +38,11 @@ async function addComment(request, response) {
 }
 
 async function addNotification(request, response) {
-    const { idUser, idGame, descriptn } = request.body;
+    const { idUser, title, descriptn } = request.body;
 
     const insertComment = {
         idUser: idUser,
-        idGame: idGame,
+        title: title,
         descriptn: descriptn
     }
 

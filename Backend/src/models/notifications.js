@@ -5,7 +5,7 @@ const model = mongoose.model;
 const notificationSchema = new Schema({
     idNot: String,
     idUser: String,
-    idGame: String,
+    title: String,
     descriptn: String
 }, {
     versionKey: false

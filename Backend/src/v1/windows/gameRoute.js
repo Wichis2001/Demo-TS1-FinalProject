@@ -1,19 +1,20 @@
 const express = require('express');
 const aGC = require('../../controllers/AddGameController');
+const notC = require('../../controllers/NotificationsController');
 const router = express.Router();
 //POST : INSERTAR COSAS
 router.post('/addNewGame', async function(request, response) {
     const { idModel } = request.body;
-
+    let idGame = "";
     switch (idModel) {
         case 'M1':
-            await aGC.newScramble(request, response);
+            idGame = await aGC.newScramble(request, response);
             break;
         case 'M2':
-            await aGC.newPreguntados(request, response);
+            idGame = await aGC.newPreguntados(request, response);
             break;
     }
-
+    notC.addNotCreateGame(request.body.idUser, idGame);
 });
 //AGREGAR PUNTOS
 router.post('/addPoints', async function(request, response) {

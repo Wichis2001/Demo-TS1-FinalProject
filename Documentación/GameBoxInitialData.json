@@ -145,7 +145,7 @@ db.createCollection('notificacions');
 db.notificacions.insert({
     idNot: "N1",
     idUser: "U1",
-    idGame: "G1",
+    title: "PRIMERA NOTIFICACION",
     descriptn: "Este es un EasterEgg XD"
 });
 
