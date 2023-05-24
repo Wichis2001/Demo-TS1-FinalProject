@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UsuarioGenerado } from '../interfaces/user.interface';
+import { NotificacionReporte, NotificationResponse, UsuarioGenerado } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,10 @@ export class ManejoUsuariosService {
     const url: string = `${this.baseUrl}/login/create`;
     usuario.rol = 'admin'
     return this.http.post<UsuarioGenerado>( url, usuario )
+  }
+
+  crearNotificacion( notificacion: NotificacionReporte ): Observable<NotificationResponse> {
+    const url: string = `${this.baseUrl}/addNotification`;
+    return this.http.post<NotificationResponse>( url, notificacion )
   }
 }
