@@ -19,7 +19,9 @@ router.route("/getCodesAnswers/:idQuest").get(async function(request, response) 
 //GET TEXTO DE LA RESPUESTA A UNA PREGUNTA - REQUERIMIENTOS: ID_ANSWER
 router.route("/getAnswer/:idAnswer").get(async function(request, response) {
     const answer = await getRC.getAnswer(request.params.idAnswer);
-    response.send(answer.answer);
+    response.send({
+        res: answer.answer
+    });
 });
 //GET PUNTOS OBTENIDOS AL SELECCIONAR UNA RESPUESTA - ID_QUESTION, ID_ANSWER - DEVUELTE: puntos obtenidos si es correcto o no
 router.route("/playPreguntados/:idQuest/:idAnswer").get(async function(request, response) {
