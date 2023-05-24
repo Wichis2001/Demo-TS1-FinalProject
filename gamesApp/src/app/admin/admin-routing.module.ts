@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
-import { ListUserComponent } from './pages/list-user/list-user.component';
 import { UserComponent } from './pages/user/user.component';
 import { ProfesoresJuegosComponent } from './pages/profesores-juegos/profesores-juegos.component';
-import { UsuarioPuntosComponent } from './pages/usuario-puntos/usuario-puntos.component';
+import { UsuariosComentariosComponent } from './pages/usuarios-comentarios/usuarios-comentarios.component';
+import { UsuariosAdministradoresComponent } from './pages/usuarios-administradores/usuarios-administradores.component';
+import { UsuariosMaestrosComponent } from './pages/usuarios-maestros/usuarios-maestros.component';
+import { UsuariosEstudiantesComponent } from './pages/usuarios-estudiantes/usuarios-estudiantes.component';
 
 
 
@@ -14,15 +16,23 @@ const routes: Routes = [
     component: LayoutPageComponent,
     children: [
       {
-        path: 'list-user',
-        component: ListUserComponent
+        path: 'list-admin',
+        component: UsuariosAdministradoresComponent
+      },
+      {
+        path: 'list-teacher',
+        component: UsuariosMaestrosComponent
+      },
+      {
+        path: 'list-student',
+        component: UsuariosEstudiantesComponent
       },
       {
         path: 'new-user',
         component: UserComponent
       },
       {
-        path: 'edit/:id',
+        path: 'edit/:idUser',
         component: UserComponent
       },
       {
@@ -30,12 +40,12 @@ const routes: Routes = [
         component: ProfesoresJuegosComponent
       },
       {
-        path: 'usuarios-puntos',
-        component: UsuarioPuntosComponent
+        path: 'usuarios-comentarios',
+        component: UsuariosComentariosComponent
       },
       {
         path: '**',
-        redirectTo: 'list-user'
+        redirectTo: 'list-admin'
       }
     ]
   }

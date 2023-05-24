@@ -15,7 +15,7 @@
     <div *ngIf="showNext">
       <button mat-button
               mat-raised
-              (click)="mostrarSiguiente()"
+              (click)="validarSiguienteScramble()"
       >
         <mat-icon>done</mat-icon>
           Continuar el juego
@@ -27,6 +27,28 @@
 </div>
 
 <div *ngIf="definidorTipo===false">
+
+  <div class="grid bm-8 pt-2">
+
+    <div *ngFor="let idPregunta of arregloPreguntas; let i = index"
+         class="col-12">
+      <div *ngIf="currentIndex === i">
+        <app-preguntados [idPregunta]="idPregunta" (puntaje)="determinarPuntaje( $event )" (cantidadIntentos)="determinarIntento( $event )"></app-preguntados>
+      </div>
+
+    </div>
+
+    <div *ngIf="showNext">
+      <button mat-button
+              mat-raised
+              (click)="validarSiguientePreguntados()"
+      >
+        <mat-icon>done</mat-icon>
+          Continuar el juego
+      </button>
+    </div>
+
+  </div>
 
 </div>
 

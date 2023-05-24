@@ -106,7 +106,7 @@ db.createCollection('question_boxes');
 db.question_boxes.insert({
     idQB: "QB1",
     idGame: "G2",
-    word: "¿Qué colores tiene la bandera de Guatemala?",
+    question: "¿Qué colores tiene la bandera de Guatemala?",
     score: 10
 })
 

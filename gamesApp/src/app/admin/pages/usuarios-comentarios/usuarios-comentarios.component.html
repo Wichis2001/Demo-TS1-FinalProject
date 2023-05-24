@@ -1,4 +1,4 @@
-<h1>Profesores Que Más Juegos han Publicado</h1>
+<h1>Usuarios Que Más Veces Han Comentado</h1>
 <mat-divider></mat-divider>
 
 <br>
@@ -15,9 +15,9 @@
     <td mat-cell *matCellDef="let reporte">{{ reporte.nickname | titlecase }}</td>
   </ng-container>
   <!-- Columna de Estado -->
-  <ng-container matColumnDef="Cantidad de Juegos">
-    <th mat-header-cell *matHeaderCellDef>Cantidad de Juegos</th>
-    <td mat-cell *matCellDef="let reporte">{{ reporte.countGames }}</td>
+  <ng-container matColumnDef="Cantidad de Comentarios">
+    <th mat-header-cell *matHeaderCellDef>Cantidad de Comentarios</th>
+    <td mat-cell *matCellDef="let reporte">{{ reporte.countComments }}</td>
   </ng-container>
   <!-- Agregar las columnas a la tabla -->
   <tr mat-header-row *matHeaderRowDef="columnas"></tr>
